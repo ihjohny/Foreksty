@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="90dp"
         android:layout_margin="1dp"
         app:cardElevation="0dp"
@@ -32,8 +32,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_date_id"
                 app:layout_constraintTop_toBottomOf="@+id/wi_day_id"
-                app:layout_constraintStart_toStartOf="@+id/wi_day_id"
-        />
+                app:layout_constraintStart_toStartOf="@+id/wi_day_id"/>
 
         <ImageView
                 android:layout_width="30dp"
@@ -42,7 +41,8 @@
                 android:id="@+id/wi_stateIcon_id"
                 android:contentDescription="@string/tempIcon_description"
                 app:layout_constraintBottom_toTopOf="@+id/wi_maxValue_id"
-                app:layout_constraintTop_toTopOf="@+id/wi_temp_id" app:layout_constraintEnd_toStartOf="@+id/wi_temp_id"
+                app:layout_constraintTop_toTopOf="@+id/wi_temp_id"
+                app:layout_constraintEnd_toStartOf="@+id/wi_temp_id"
                 android:layout_marginEnd="4dp"/>
 
         <TextView
@@ -52,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_temp_id"
                 app:layout_constraintBaseline_toBaselineOf="@+id/wi_day_id"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"/>
 
         <TextView
                 android:text="@string/max"
@@ -80,7 +81,8 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
                 app:layout_constraintEnd_toStartOf="@+id/wi_max_id"
-                android:layout_marginEnd="8dp" android:layout_marginTop="4dp"/>
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="4dp"/>
 
         <TextView
                 android:text="@string/maxValue"
@@ -89,7 +91,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_maxValue_id"
                 app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
-                app:layout_constraintEnd_toEndOf="@+id/wi_temp_id" android:layout_marginTop="4dp"/>
+                app:layout_constraintEnd_toEndOf="@+id/wi_temp_id"
+                android:layout_marginTop="4dp"/>
 
         <ImageView
                 android:layout_width="24dp"

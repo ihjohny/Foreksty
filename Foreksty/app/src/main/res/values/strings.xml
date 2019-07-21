@@ -61,6 +61,8 @@
     <string name="hwi_statIcon_description">Hour Weather State Icon</string>
     <string name="hwi_time">12AM</string>
 
+    <string name="icon_description">Icon Description</string>
+
 
 
 </resources>

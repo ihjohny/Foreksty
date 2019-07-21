@@ -27,9 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     app:cardElevation="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/margin_small"
                     android:id="@+id/twf_cardView0_id">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,9 +128,7 @@
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/margin_small"
                     app:cardElevation="0dp"
                     android:id="@+id/twf_cardView1_id">
 
@@ -191,9 +187,7 @@
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/margin_small"
                     app:cardElevation="0dp"
                     android:id="@+id/twf_cardView2_id">
 
@@ -225,7 +219,8 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintTop_toBottomOf="@+id/twf_cv1_chancePrec_id"
                             android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:contentDescription="@string/icon_description"/>
 
                     <!--                    <com.github.mikephil.charting.charts.LineChart
                                                 android:layout_width="0dp"
@@ -252,11 +247,11 @@
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="10dp"
                         android:id="@+id/twf_cardView3_id"
                         app:layout_constraintEnd_toStartOf="@+id/twf_cardView4_id"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="@dimen/margin_small"
                         app:cardElevation="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -311,12 +306,12 @@
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="10dp"
                         app:layout_constraintStart_toEndOf="@+id/twf_cardView3_id"
                         android:id="@+id/twf_cardView4_id"
                         android:layout_marginStart="8dp"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="@dimen/margin_small"
                         app:cardElevation="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

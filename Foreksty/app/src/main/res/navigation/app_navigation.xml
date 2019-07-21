@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/app_navigation"
+            app:startDestination="@id/currentWeather">
+
+    <fragment android:id="@+id/currentWeather"
+              android:name="com.aappeye.foreksty.ui.weather.current.CurrentWeather"
+              android:label="@string/current_weather"
+              tools:layout="@layout/current_weather_fragment"/>
+
+    <fragment android:id="@+id/todayWeather"
+              android:name="com.aappeye.foreksty.ui.weather.today.TodayWeather"
+              android:label="@string/today_weather"
+              tools:layout="@layout/today_weather_fragment"/>
+
+    <fragment android:id="@+id/weekWeather"
+              android:name="com.aappeye.foreksty.ui.weather.week.WeekWeather"
+              android:label="@string/this_week"
+              tools:layout="@layout/week_weather_fragment"/>
+
+</navigation>

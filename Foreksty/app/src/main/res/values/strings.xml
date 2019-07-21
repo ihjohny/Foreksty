@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Foreksty</string>
+
+    <string name="current_weather">Current Weather</string>
+    <string name="today_weather">Today\'s Weather</string>
+    <string name="this_week">This Week</string>
+
+    <string name="refresh">Refresh</string>
+    <string name="location">Location</string>
+
+    <string name="temp">26ºC</string>
+    <string name="feels">Feels like 28ºC</string>
+    <string name="stateIcon_description">Weather State Icon</string>
+    <string name="state">Moderate or heavy rain shower</string>
+    <string name="last_update">Last Update</string>
+    <string name="timeDate">8:20PM 16-jul-2019</string>
+
+    <string name="windIcon_description">Wind Icon</string>
+    <string name="wind">Wind</string>
+    <string name="windValue">ESE, 8KPH</string>
+
+    <string name="precIcon_description">Preciption Icon</string>
+    <string name="prec">Precipition</string>
+    <string name="precValue">2.5MM</string>
+
+    <string name="humIcon_description">Humidity Icon</string>
+    <string name="hum">Humidity</string>
+    <string name="humValue">78%</string>
+
+    <string name="preIcon_description">Pressure Icon</string>
+    <string name="pre">Pressure</string>
+    <string name="preValue">876MB</string>
+
+    <string name="uvIcon_description">UV Index Icon</string>
+    <string name="uv">UV Index</string>
+    <string name="uvValue">2</string>
+
+    <string name="visIcon_description">Visibility Icon</string>
+    <string name="vis">Visibility</string>
+    <string name="visValue">15KM</string>
+
+    <string name="day">Sunday</string>
+    <string name="date">27-jan-2019</string>
+    <string name="tempIcon_description">Temp Icon</string>
+    <string name="dayTemp">28ºC</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="minValue">27ºC</string>
+    <string name="maxValue">29ºC</string>
+
+    <string name="hourly_weather">Hourly Weather</string>
+    <string name="chancePrec">Chance of Precipitation</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunriseIcon_description">Sunrise Icon</string>
+    <string name="sunriseValue">5:30AM</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunsetIcon_description">Sunset Icon</string>
+    <string name="sunsetValue">6:30AM</string>
+
+    <string name="hwi_temp">28ºC</string>
+    <string name="hwi_statIcon_description">Hour Weather State Icon</string>
+    <string name="hwi_time">12AM</string>
+
+
+
+</resources>

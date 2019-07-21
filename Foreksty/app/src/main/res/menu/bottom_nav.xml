@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/currentWeather"
+          android:icon="@drawable/current_black_24dp"
+          android:title="@string/current_weather"/>
+
+    <item android:id="@+id/todayWeather"
+          android:icon="@drawable/today_black_24dp"
+          android:title="@string/today_weather"/>
+
+    <item android:id="@+id/weekWeather"
+          android:icon="@drawable/week_black_24dp"
+          android:title="@string/this_week"/>
+
+</menu>

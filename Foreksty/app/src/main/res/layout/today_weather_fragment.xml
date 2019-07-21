@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/grey_5"
+        tools:context=".ui.weather.today.TodayWeather"
+        android:id="@+id/today_weather_fragment_layout_id">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/twf_scrollView_id">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/twf_layout_id">
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/twf_cardView0_id">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/twf_cv0_layout_id">
+
+                    <TextView
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:text="@string/day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twf_cv0_day_id" app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/twf_cv0_date_id"/>
+
+                    <TextView
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:text="@string/dayTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twf_cv0_dayTemp_id"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/twf_cv0_day_id"/>
+
+                    <TextView
+                            android:text="@string/date"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twf_cv0_date_id"
+                            app:layout_constraintStart_toStartOf="@+id/twf_cv0_day_id"
+                            app:layout_constraintTop_toBottomOf="@+id/twf_cv0_day_id"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:layout_constraintEnd_toEndOf="@+id/twf_cv0_day_id"/>
+
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/temp"
+                            android:id="@+id/twf_cv0_tempIcon_id"
+                            app:layout_constraintEnd_toStartOf="@+id/twf_cv0_dayTemp_id"
+                            app:layout_constraintTop_toTopOf="@+id/twf_cv0_dayTemp_id"
+                            app:layout_constraintBottom_toBottomOf="@+id/twf_cv0_dayTemp_id"
+                            android:contentDescription="@string/tempIcon_description"/>
+
+                    <TextView
+                            android:text="@string/max"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/wi_max_id"
+                            app:layout_constraintEnd_toStartOf="@+id/wi_maxValue_id"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/wi_maxValue_id"/>
+
+                    <TextView
+                            android:text="@string/min"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/wi_min_id"
+                            app:layout_constraintEnd_toStartOf="@+id/wi_minValue_id"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/wi_minValue_id"/>
+
+                    <TextView
+                            android:text="@string/minValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/wi_minValue_id"
+                            app:layout_constraintEnd_toStartOf="@+id/wi_max_id"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/twf_cv0_dayTemp_id"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                            android:text="@string/maxValue"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/wi_maxValue_id"
+                            app:layout_constraintEnd_toEndOf="@+id/twf_cv0_dayTemp_id"
+                            app:layout_constraintTop_toBottomOf="@+id/twf_cv0_dayTemp_id"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="8dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardElevation="0dp"
+                    android:id="@+id/twf_cardView1_id">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/twf_cv1_layout_id">
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:id="@+id/linearLayout"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="8dp">
+
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+                        <include layout="@layout/hour_weather_item"/>
+
+                    </LinearLayout>
+                    <TextView
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:text="@string/hourly_weather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twf_cv1_hourlyWeather_id"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toTopOf="@+id/linearLayout"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/twf_cv1_hourlyRecy_id"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardElevation="0dp"
+                    android:id="@+id/twf_cardView2_id">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/twf_cv2_layout_id">
+
+                    <TextView
+                            android:text="@string/chancePrec"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/twf_cv1_chancePrec_id"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="8dp"/>
+
+                    <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/chance_of_precipitation"
+                            android:id="@+id/twf_cv2_lineChart_id"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/twf_cv1_chancePrec_id"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <!--                    <com.github.mikephil.charting.charts.LineChart
+                                                android:layout_width="0dp"
+                                                android:layout_height="0dp"
+                                                android:layout_marginBottom="8dp"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                                                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                                                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView30">
+
+                                        </com.github.mikephil.charting.charts.LineChart>-->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/twf_constraint_layout_id">
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/twf_cardView3_id"
+                        app:layout_constraintEnd_toStartOf="@+id/twf_cardView4_id"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                        app:cardElevation="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/twf_cv3_layout_id">
+
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/sunrise"
+                                android:id="@+id/twf_cv3_sunriseIcon_id"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginBottom="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:contentDescription="@string/sunriseIcon_description"/>
+
+                        <TextView
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                                android:text="@string/sunrise"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/twf_cv3_sunrise_id"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintStart_toEndOf="@+id/twf_cv3_sunriseIcon_id"
+                                app:layout_constraintTop_toTopOf="@+id/twf_cv3_sunriseIcon_id"
+                                app:layout_constraintBottom_toBottomOf="@+id/twf_cv3_sunriseIcon_id"/>
+
+                        <TextView
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:text="@string/sunriseValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/twf_cv3_sunriseValue_id"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintStart_toEndOf="@+id/twf_cv3_sunrise_id"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintTop_toTopOf="@+id/twf_cv3_sunrise_id"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintBottom_toBottomOf="@+id/twf_cv3_sunrise_id"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="10dp"
+                        app:layout_constraintStart_toEndOf="@+id/twf_cardView3_id"
+                        android:id="@+id/twf_cardView4_id"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+                        app:cardElevation="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/twf_cv4_layout_id">
+
+
+                        <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/sunset"
+                                android:id="@+id/twf_cv4_sunsetIcon_id"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp"
+                                android:contentDescription="@string/sunsetIcon_description"/>
+
+                        <TextView
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                                android:text="@string/sunset"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/twf_cv4_sunset_id"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintStart_toEndOf="@+id/twf_cv4_sunsetIcon_id"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp"/>
+
+                        <TextView
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                                android:text="@string/sunsetValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/twf_cv4_sunsetValue_id"
+                                app:layout_constraintStart_toEndOf="@+id/twf_cv4_sunset_id"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="8dp"
+                                app:layout_constraintTop_toTopOf="@+id/twf_cv4_sunset_id"
+                                app:layout_constraintBottom_toBottomOf="@+id/twf_cv4_sunset_id"
+                                app:layout_constraintHorizontal_bias="0.0"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

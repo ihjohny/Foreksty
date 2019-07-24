@@ -11,9 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/settings"
-            android:background="@android:color/white"
-            style="@style/Widget.MaterialComponents.Toolbar">
-
+            android:theme="@style/ToolbarTheme">
     </com.google.android.material.appbar.MaterialToolbar>
 
     <FrameLayout

@@ -12,7 +12,8 @@
 
         <Preference
                 app:dependency="@string/receive_notif_key"
-                app:summary="@string/receive_time_sum"
+                app:defaultValue="@string/receive_time_default_value"
+
                 app:key="@string/receive_time_key"
                 app:title="@string/receive_time"
                 app:useSimpleSummaryProvider="true" />

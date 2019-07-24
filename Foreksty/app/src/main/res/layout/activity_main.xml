@@ -14,13 +14,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            style="@style/Widget.MaterialComponents.Toolbar"
-            android:layout_margin="@dimen/activity_horizontal_margin">
-
+            android:theme="@style/ToolbarTheme">
     </com.google.android.material.appbar.MaterialToolbar>
 
     <fragment
+            android:layout_marginTop="@dimen/margin_small"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:id="@+id/nav_host_fragment"

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.aappeye.foreksty.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         bottom_nav.setupWithNavController(navController)
        // NavigationUI.setupActionBarWithNavController(this,navController)
 
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar()?.setHomeButtonEnabled(true);
-        getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.menu_gray_60_24dp)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        getSupportActionBar()?.setHomeButtonEnabled(true)
+        getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

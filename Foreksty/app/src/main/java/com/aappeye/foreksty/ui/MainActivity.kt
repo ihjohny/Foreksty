@@ -1,5 +1,6 @@
 package com.aappeye.foreksty.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,8 +12,7 @@ import com.aappeye.foreksty.R
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.Toast
 import android.view.MenuItem
-
-
+import com.aappeye.foreksty.ui.settings.Settings
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,18 +38,27 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+/*
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,null)
     }
+*/
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
 
-        if (id == R.id.refresh) {
-            Toast.makeText(this@MainActivity, "Refresh clicked", Toast.LENGTH_LONG).show()
+        if (id == android.R.id.home) {
+            val intent = Intent(this@MainActivity, Settings::class.java)
+            startActivity(intent)
             return true
+        }
+        else if(id == R.id.refresh){
+            Toast.makeText(this,"Refresh Clicked",Toast.LENGTH_SHORT).show()
+        }
+        else if(id == R.id.location){
+            Toast.makeText(this,"Location Clicked",Toast.LENGTH_SHORT).show()
         }
 
         return super.onOptionsItemSelected(item)

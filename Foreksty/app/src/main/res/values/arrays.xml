@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="receive_time_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="receive_time_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="unit_system_entries">
+        <item>Metric</item>
+        <item>Imperial</item>
+    </string-array>
+
+    <string-array name="unit_system_values">
+        <item>METRIC</item>
+        <item>IMPERIAL</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>Bangla</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>BAN</item>
+        <item>EN</item>
+    </string-array>
+
+    <string-array name="update_freq_entries">
+        <item>15 Minutes</item>
+        <item>30 Minutes</item>
+        <item>60 Minutes</item>
+        <item>90 Minutes</item>
+    </string-array>
+
+    <string-array name="update_freq_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+
+    </string-array>
+
+
+</resources>

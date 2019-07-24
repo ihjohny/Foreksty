@@ -1,68 +1,99 @@
 <resources>
     <string name="app_name">Foreksty</string>
+    <string name="app_version">1</string>
+    <string name="app_developer">Md. Imam Hossain Johny</string>
+    <string name="app_company">Aappeye</string>
 
     <string name="current_weather">Current Weather</string>
     <string name="today_weather">Today\'s Weather</string>
     <string name="this_week">This Week</string>
+    <string name="settings">Settings</string>
 
     <string name="refresh">Refresh</string>
     <string name="location">Location</string>
 
     <string name="temp">26ºC</string>
     <string name="feels">Feels like 28ºC</string>
-    <string name="stateIcon_description">Weather State Icon</string>
+    <string name="state_icon_description">Weather State Icon</string>
     <string name="state">Moderate or heavy rain shower</string>
     <string name="last_update">Last Update</string>
-    <string name="timeDate">8:20PM 16-jul-2019</string>
+    <string name="time_date">8:20PM 16-jul-2019</string>
 
-    <string name="windIcon_description">Wind Icon</string>
+    <string name="wind_icon_description">Wind Icon</string>
     <string name="wind">Wind</string>
-    <string name="windValue">ESE, 8KPH</string>
+    <string name="wind_value">ESE, 8KPH</string>
 
-    <string name="precIcon_description">Preciption Icon</string>
+    <string name="prec_icon_description">Preciption Icon</string>
     <string name="prec">Precipition</string>
-    <string name="precValue">2.5MM</string>
+    <string name="prec_value">2.5MM</string>
 
-    <string name="humIcon_description">Humidity Icon</string>
+    <string name="hum_icon_description">Humidity Icon</string>
     <string name="hum">Humidity</string>
-    <string name="humValue">78%</string>
+    <string name="hum_value">78%</string>
 
-    <string name="preIcon_description">Pressure Icon</string>
+    <string name="pre_icon_description">Pressure Icon</string>
     <string name="pre">Pressure</string>
-    <string name="preValue">876MB</string>
+    <string name="pre_value">876MB</string>
 
-    <string name="uvIcon_description">UV Index Icon</string>
+    <string name="uv_icon_description">UV Index Icon</string>
     <string name="uv">UV Index</string>
-    <string name="uvValue">2</string>
+    <string name="uv_value">2</string>
 
-    <string name="visIcon_description">Visibility Icon</string>
+    <string name="vis_icon_description">Visibility Icon</string>
     <string name="vis">Visibility</string>
-    <string name="visValue">15KM</string>
+    <string name="vis_value">15KM</string>
 
     <string name="day">Sunday</string>
     <string name="date">27-jan-2019</string>
-    <string name="tempIcon_description">Temp Icon</string>
-    <string name="dayTemp">28ºC</string>
+    <string name="temp_icon_description">Temp Icon</string>
+    <string name="day_temp">28ºC</string>
     <string name="min">Min</string>
     <string name="max">Max</string>
-    <string name="minValue">27ºC</string>
-    <string name="maxValue">29ºC</string>
+    <string name="min_value">27ºC</string>
+    <string name="max_value">29ºC</string>
 
     <string name="hourly_weather">Hourly Weather</string>
-    <string name="chancePrec">Chance of Precipitation</string>
+    <string name="chance_prec">Chance of Precipitation</string>
     <string name="sunrise">Sunrise</string>
-    <string name="sunriseIcon_description">Sunrise Icon</string>
-    <string name="sunriseValue">5:30AM</string>
+    <string name="sunrise_icon_description">Sunrise Icon</string>
+    <string name="sunrise_value">5:30AM</string>
     <string name="sunset">Sunset</string>
-    <string name="sunsetIcon_description">Sunset Icon</string>
-    <string name="sunsetValue">6:30AM</string>
+    <string name="sunset_icon_description">Sunset Icon</string>
+    <string name="sunset_value">6:30AM</string>
 
     <string name="hwi_temp">28ºC</string>
-    <string name="hwi_statIcon_description">Hour Weather State Icon</string>
+    <string name="hwi_state_icon_description">Hour Weather State Icon</string>
     <string name="hwi_time">12AM</string>
 
     <string name="icon_description">Icon Description</string>
 
+    <string name="notif">Notification</string>
+    <string name="receive_notif">Receive Notification</string>
+    <string name="receive_notif_key">receive_notif</string>
+    <string name="receive_notif_sum">Get weather notification everyday</string>
+    <string name="receive_time">Time to Receive Notification</string>
+    <string name="receive_time_key">receive_time</string>
+    <string name="receive_time_sum">8AM</string>
+
+    <string name="others">Others</string>
+    <string name="select_unit_system">Select Unit System</string>
+    <string name="unit_system">Unit System</string>
+    <string name="unit_system_key">unit_system</string>
+    <string name="unit_system_default_value">METRIC</string>
+
+    <string name="select_language">Select Language</string>
+    <string name="language">Language</string>
+    <string name="language_key">language</string>
+    <string name="language_default_value">EN</string>
+
+    <string name="update_freq">Update Frequency</string>
+    <string name="update_freq_key">update_freq</string>
+    <string name="update_freq_sum">Weather update interval</string>
+    <string name="update_freq_default_value">30</string>
+
+    <string name="about">About</string>
+    <string name="about_key">about</string>
+    <string name="about_sum">Foreksty version 1.0</string>
 
 
 </resources>

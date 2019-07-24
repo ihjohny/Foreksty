@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+            app:title="@string/notif">
+
+        <SwitchPreferenceCompat
+                app:key="@string/receive_notif_key"
+                app:summary="@string/receive_notif_sum"
+                app:title="@string/receive_notif"/>
+
+        <Preference
+                app:dependency="@string/receive_notif_key"
+                app:summary="@string/receive_time_sum"
+                app:key="@string/receive_time_key"
+                app:title="@string/receive_time"
+                app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            app:title="@string/others">
+
+        <ListPreference
+                app:dialogTitle="@string/select_unit_system"
+                app:entries="@array/unit_system_entries"
+                app:entryValues="@array/unit_system_values"
+                app:key="@string/unit_system_key"
+                app:title="@string/unit_system"
+                app:defaultValue="@string/unit_system_default_value"
+                app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+                app:dialogTitle="@string/select_language"
+                app:entries="@array/language_entries"
+                app:entryValues="@array/language_values"
+                app:key="@string/language_key"
+                app:defaultValue="@string/language_default_value"
+                app:title="@string/language"
+                app:useSimpleSummaryProvider="true" />
+
+
+        <ListPreference
+                app:dialogTitle="@string/update_freq_sum"
+                app:entries="@array/update_freq_entries"
+                app:entryValues="@array/update_freq_values"
+                app:key="@string/update_freq_key"
+                app:defaultValue="@string/update_freq_default_value"
+                app:title="@string/update_freq"
+                app:useSimpleSummaryProvider="true" />
+
+        <Preference
+                app:enableCopying="true"
+                app:key="@string/about_key"
+                app:summary="@string/about_sum"
+                app:title="@string/about"/>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

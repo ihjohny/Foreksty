@@ -113,7 +113,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv0_guideline2_id"
-                    android:contentDescription="@string/stateIcon_description"
+                    android:contentDescription="@string/state_icon_description"
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintVertical_bias="1.0"/>
 
@@ -147,7 +147,7 @@
                     app:layout_constraintHorizontal_bias="0.0"/>
 
             <TextView
-                    android:text="@string/timeDate"
+                    android:text="@string/time_date"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:contentDescription="@string/windIcon_description"/>
+                    android:contentDescription="@string/wind_icon_description"/>
 
             <androidx.constraintlayout.widget.Guideline
                     android:orientation="horizontal"
@@ -234,7 +234,7 @@
                     app:layout_constraintTop_toTopOf="@+id/cwf_cv1_guideline0_id"/>
 
             <TextView
-                    android:text="@string/windValue"
+                    android:text="@string/wind_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
@@ -295,7 +295,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv2_guideline0_id"
-                    android:contentDescription="@string/precIcon_description"/>
+                    android:contentDescription="@string/prec_icon_description"/>
 
             <TextView
                     android:text="@string/prec"
@@ -311,7 +311,7 @@
                     android:layout_marginStart="8dp"/>
 
             <TextView
-                    android:text="@string/precValue"
+                    android:text="@string/prec_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
@@ -370,7 +370,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv3_guideline0_id"
-                    android:contentDescription="@string/humIcon_description"/>
+                    android:contentDescription="@string/hum_icon_description"/>
 
             <TextView
                     android:text="@string/hum"
@@ -386,7 +386,7 @@
                     android:layout_marginEnd="8dp"/>
 
             <TextView
-                    android:text="@string/humValue"
+                    android:text="@string/hum_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
@@ -442,7 +442,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv4_guideline0_id"
-                    android:contentDescription="@string/precIcon_description"/>
+                    android:contentDescription="@string/prec_icon_description"/>
 
             <TextView
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -459,7 +459,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv4_preValue_id"/>
 
             <TextView
-                    android:text="@string/preValue"
+                    android:text="@string/pre_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
@@ -515,7 +515,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv5_guideline0_id"
-                    android:contentDescription="@string/uvIcon_description"/>
+                    android:contentDescription="@string/uv_icon_description"/>
 
             <TextView
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -532,7 +532,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv5_uvValue_id"/>
 
             <TextView
-                    android:text="@string/uvValue"
+                    android:text="@string/uv_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
@@ -587,7 +587,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv6_guideline0_id"
-                    android:contentDescription="@string/visIcon_description"/>
+                    android:contentDescription="@string/vis_icon_description"/>
 
             <TextView
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -603,7 +603,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cwf_cv6_visIcon_id"/>
 
             <TextView
-                    android:text="@string/visValue"
+                    android:text="@string/vis_value"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"

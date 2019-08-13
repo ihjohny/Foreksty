@@ -20,10 +20,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_day_id"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/wi_date_id"/>
+                android:layout_marginStart="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="@+id/wi_temp_id"
+                app:layout_constraintBottom_toTopOf="@+id/wi_date_id"
+        />
 
         <TextView
                 android:text="@string/date"
@@ -32,7 +32,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_date_id"
                 app:layout_constraintTop_toBottomOf="@+id/wi_day_id"
-                app:layout_constraintStart_toStartOf="@+id/wi_day_id"/>
+                app:layout_constraintStart_toStartOf="@+id/wi_day_id"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="@+id/wi_day_id"/>
 
         <ImageView
                 android:layout_width="30dp"
@@ -43,7 +45,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/wi_maxValue_id"
                 app:layout_constraintTop_toTopOf="@+id/wi_temp_id"
                 app:layout_constraintEnd_toStartOf="@+id/wi_temp_id"
-                android:layout_marginEnd="4dp"/>
+                android:layout_marginEnd="@dimen/margin_tiny"/>
 
         <TextView
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -51,9 +53,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/wi_temp_id"
-                app:layout_constraintBaseline_toBaselineOf="@+id/wi_day_id"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="@dimen/margin_small" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/margin_small"/>
 
         <TextView
                 android:text="@string/max"
@@ -81,8 +83,8 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
                 app:layout_constraintEnd_toStartOf="@+id/wi_max_id"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_tiny"/>
 
         <TextView
                 android:text="@string/max_value"
@@ -92,72 +94,23 @@
                 android:id="@+id/wi_maxValue_id"
                 app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
                 app:layout_constraintEnd_toEndOf="@+id/wi_temp_id"
-                android:layout_marginTop="4dp"/>
-
-        <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/wind"
-                android:id="@+id/wi_windIcon_id"
-                app:layout_constraintStart_toStartOf="@+id/wi_day_id"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/wi_date_id"
-                android:contentDescription="@string/wind_icon_description"/>
-
-        <TextView
-                android:text="@string/wind_value"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/wi_windValue_id"
-                app:layout_constraintTop_toTopOf="@+id/wi_windIcon_id"
-                app:layout_constraintBottom_toBottomOf="@+id/wi_windIcon_id"
-                app:layout_constraintStart_toEndOf="@+id/wi_windIcon_id"
-                android:layout_marginStart="4dp"/>
-
-        <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/precipation"
-                android:id="@+id/wi_precIcon_id"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/wi_windValue_id"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/wi_date_id"
-                android:contentDescription="@string/pre_icon_description"/>
-
-        <TextView
-                android:text="@string/prec_value"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/wi_precValue_id"
-                app:layout_constraintStart_toEndOf="@+id/wi_precIcon_id"
-                android:layout_marginStart="4dp"
-                app:layout_constraintTop_toTopOf="@+id/wi_precIcon_id"
-                app:layout_constraintBottom_toBottomOf="@+id/wi_precIcon_id"/>
-
-        <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/humidity"
-                android:id="@+id/wi_humIcon_id"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/wi_precValue_id"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/wi_date_id"
-                android:contentDescription="@string/hum_icon_description"/>
+                android:layout_marginTop="@dimen/margin_tiny"/>
 
         <TextView
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:text="@string/hum_value"
+                android:text="@string/state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/wi_humValue_id"
-                app:layout_constraintStart_toEndOf="@+id/wi_humIcon_id"
-                android:layout_marginStart="4dp"
-                app:layout_constraintBottom_toBottomOf="@+id/wi_humIcon_id"
-                app:layout_constraintTop_toTopOf="@+id/wi_humIcon_id"/>
+                android:id="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/margin_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/wi_maxValue_id"
+                android:layout_marginTop="@dimen/margin_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/margin_small"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

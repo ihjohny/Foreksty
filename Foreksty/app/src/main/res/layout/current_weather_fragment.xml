@@ -57,11 +57,11 @@
 
             <TextView
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                    android:text="@string/temp"
+                    android:text="@string/temp_value"
                     android:textSize="50sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cwf_cv0_temp_id"
+                    android:id="@+id/cwf_cv0_tempValue_id"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/cwf_cv0_guideline1_id"
@@ -93,10 +93,10 @@
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv0_guideline2_id"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/cwf_cv0_temp_id"
+                    app:layout_constraintTop_toBottomOf="@+id/cwf_cv0_tempValue_id"
                     app:layout_constraintVertical_bias="0.0"
-                    app:layout_constraintEnd_toEndOf="@+id/cwf_cv0_temp_id"
-                    app:layout_constraintStart_toStartOf="@+id/cwf_cv0_temp_id"/>
+                    app:layout_constraintEnd_toEndOf="@+id/cwf_cv0_tempValue_id"
+                    app:layout_constraintStart_toStartOf="@+id/cwf_cv0_tempValue_id"/>
 
             <ImageView
                     app:layout_constraintHeight_max="100dp"
@@ -130,7 +130,7 @@
                     android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/cwf_cv0_guideline3_id"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintVertical_bias="0.56"/>
+                    app:layout_constraintVertical_bias="0.5"/>
 
             <TextView
                     android:text="@string/last_update"
@@ -147,19 +147,17 @@
                     app:layout_constraintHorizontal_bias="0.0"/>
 
             <TextView
-                    android:text="@string/time_date"
+                    android:text="@string/time"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cwf_cv0_timeDate_id"
-                    app:layout_constraintStart_toStartOf="@+id/cwf_cv0_guideline1_id"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"
+                    android:id="@+id/cwf_cv0_time_id"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/cwf_cv0_guideline3_id"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintVertical_bias="0.509"/>
+                    app:layout_constraintEnd_toStartOf="@+id/cwf_cv0_date_id"
+                    android:layout_marginEnd="@dimen/margin_tiny"
+                    app:layout_constraintStart_toStartOf="@+id/cwf_cv0_guideline1_id"
+                    android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="1.0"/>
 
             <androidx.constraintlayout.widget.Guideline
                     android:orientation="horizontal"
@@ -171,6 +169,18 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintGuide_percent="0.85"
                     app:layout_constraintTop_toTopOf="@id/cwf_cv0_guideline2_id"/>
+
+            <TextView
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:text="@string/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/cwf_cv0_guideline3_id"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/cwf_cv0_date_id"
+            />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -187,7 +197,8 @@
             android:id="@+id/cwf_cardView1_id"
             app:layout_constraintEnd_toStartOf="@+id/cwf_cardView2_id"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_marginEnd="@dimen/margin_small">
+            android:layout_marginEnd="@dimen/margin_small"
+            app:layout_constraintBottom_toTopOf="@+id/cwf_cardView4_id">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -264,7 +275,8 @@
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
             app:layout_constraintTop_toTopOf="@+id/cwf_guideline0_id"
-            android:layout_marginEnd="@dimen/margin_small">
+            android:layout_marginEnd="@dimen/margin_small"
+            app:layout_constraintBottom_toTopOf="@+id/cwf_cardView5_id">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -308,7 +320,8 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintTop_toBottomOf="@+id/cwf_cv2_precIcon_id"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/cwf_cv2_precValue_id"/>
 
             <TextView
                     android:text="@string/prec_value"
@@ -340,7 +353,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_small"
-            app:layout_constraintTop_toTopOf="@+id/cwf_guideline0_id">
+            app:layout_constraintTop_toTopOf="@+id/cwf_guideline0_id"
+            app:layout_constraintBottom_toTopOf="@+id/cwf_cardView6_id">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -383,7 +397,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/cwf_cv3_humValue_id"/>
 
             <TextView
                     android:text="@string/hum_value"
@@ -416,7 +431,8 @@
             android:layout_marginTop="@dimen/margin_small"
             app:layout_constraintTop_toBottomOf="@+id/cwf_cardView1_id"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_marginEnd="@dimen/margin_small">
+            android:layout_marginEnd="@dimen/margin_small"
+    >
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -600,7 +616,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/cwf_cv6_visIcon_id"/>
+                    app:layout_constraintTop_toBottomOf="@+id/cwf_cv6_visIcon_id"
+                    app:layout_constraintBottom_toTopOf="@+id/cwf_cv6_visValue_id"/>
 
             <TextView
                     android:text="@string/vis_value"

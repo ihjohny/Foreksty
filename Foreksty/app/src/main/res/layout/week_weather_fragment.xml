@@ -22,6 +22,8 @@
             <include layout="@layout/week_item"/>
             <include layout="@layout/week_item"/>
             <include layout="@layout/week_item"/>
+            <include layout="@layout/week_item"/>
+            <include layout="@layout/week_item"/>
 
         </LinearLayout>
 

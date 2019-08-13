@@ -16,12 +16,12 @@
     <string name="refresh">Refresh</string>
     <string name="location">Location</string>
 
-    <string name="temp">26ºC</string>
+    <string name="temp_value">26ºC</string>
     <string name="feels">Feels like 28ºC</string>
     <string name="state_icon_description">Weather State Icon</string>
     <string name="state">Moderate or heavy rain shower</string>
     <string name="last_update">Last Update</string>
-    <string name="time_date">8:20PM 16-jul-2019</string>
+    <string name="time">8:20PM</string>
 
     <string name="wind_icon_description">Wind Icon</string>
     <string name="wind">Wind</string>
@@ -56,6 +56,7 @@
     <string name="min_value">27ºC</string>
     <string name="max_value">29ºC</string>
 
+    <string name="details">Details(Average)</string>
     <string name="hourly_weather">Hourly Weather</string>
     <string name="chance_prec">Chance of Precipitation</string>
     <string name="sunrise">Sunrise</string>

@@ -12,7 +12,7 @@ import com.aappeye.foreksty.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.settings, rootKey)
+        setPreferencesFromResource(R.xml.preference, rootKey)
         notificationReceiveTime()
         aboutDialogShow()
     }

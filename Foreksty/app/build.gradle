@@ -76,4 +76,11 @@ dependencies {
     //Preference
     implementation "androidx.preference:preference:$preference_version"
 
+    //WeatherLocation
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+
+
+    //kodein
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 }

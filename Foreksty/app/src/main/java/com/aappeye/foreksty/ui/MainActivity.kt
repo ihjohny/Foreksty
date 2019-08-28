@@ -79,11 +79,6 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.toolbar, menu)
-        return true
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -98,14 +93,18 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.toolbar, menu)
+        return true
+    }
 /*
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,null)
     }
 */
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
 

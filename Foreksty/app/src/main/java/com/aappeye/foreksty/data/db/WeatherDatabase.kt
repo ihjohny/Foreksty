@@ -4,16 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
 import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.WeatherLocation
-import java.util.concurrent.locks.Lock
+import com.aappeye.foreksty.utils.LocalDateConverter
 
 @Database(
     entities = [CurrentWeatherEntry::class, HourlyWeatherEntry::class, DailyWeatherEntry::class, WeatherLocation::class],
     version = 1
 )
+@TypeConverters(LocalDateConverter::class)
 abstract class WeatherDatabase : RoomDatabase(){
     abstract fun currentWeatherDao(): CurrentWeatherDao
     abstract fun dailyWeatherDao(): DailyWeatherDao

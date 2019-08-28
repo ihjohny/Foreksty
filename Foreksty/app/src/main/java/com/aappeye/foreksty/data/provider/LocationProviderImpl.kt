@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.aappeye.foreksty.data.db.entity.WeatherLocation
 import com.aappeye.foreksty.internal.LocationPermissionNotGrantedException
@@ -48,15 +49,29 @@ class LocationProviderImpl(
         }*/
         try{
             val deviceLocation = getLastDeviceLocation().await()
-                ?: return "23.127487,90.750908"
+                ?: return "22.870064,91.096935"
             return "${deviceLocation.latitude},${deviceLocation.longitude}"
         }
         catch (e: LocationPermissionNotGrantedException){
-            return "23.127487,90.750908"
+            return "22.870064,91.096935"
         }
 
-
     }
+/*
+    override fun getPreferredUnitSystem(): String {
+        Log.d("Preferences", preferences.getString(UNIT_SYSTEM, UNIT_SYSTEM_DEF))
+        return preferences.getString(UNIT_SYSTEM, UNIT_SYSTEM_DEF)!!
+    }
+
+    override fun getPreferredLanguage(): String {
+        Log.d("Preferences", preferences.getString(LANGUAGE, LANGUAGE_DEF))
+        return preferences.getString(LANGUAGE, LANGUAGE_DEF)!!
+    }
+
+    override fun getPreferredUpdateFrequency(): String {
+        Log.d("Preferences", preferences.getString(UPDATE_FREQUENCY, UPDATE_FREQUENCY_DEF))
+        return preferences.getString(UPDATE_FREQUENCY, UPDATE_FREQUENCY_DEF)!!
+    }*/
 
     private suspend fun hasDeviceLocationChanged(lastWeatherLocation: WeatherLocation): Boolean{
         if(!isUsingDeviceLocation())
@@ -80,7 +95,7 @@ class LocationProviderImpl(
     }
 
     private fun getCustomLocationName(): String?{
-        return preferences.getString(CUSTOM_LOCATION, null)
+        return preferences.getString(LANGUAGE, null)
     }
 
     @SuppressLint("MissingPermission")

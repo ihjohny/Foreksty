@@ -12,11 +12,12 @@ import com.aappeye.foreksty.data.db.entity.WeatherLocation
 import com.aappeye.foreksty.data.network.WeatherNetworkDataSource
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.aappeye.foreksty.data.provider.LocationProvider
+import com.aappeye.foreksty.data.provider.SettingsProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
+import org.threeten.bp.ZonedDateTime
 
 class ForecastRepositoryImpl(
     private val currentWeatherDao: CurrentWeatherDao,
@@ -24,6 +25,7 @@ class ForecastRepositoryImpl(
     private val dailyWeatherDao: DailyWeatherDao,
     private val weatherLocationDao: WeatherLocationDao,
     private val weatherNetworkDataSource: WeatherNetworkDataSource,
+    private val settingsProvider: SettingsProvider,
     private val locationProvider: LocationProvider
 ): ForecastRepository {
 
@@ -35,46 +37,67 @@ class ForecastRepositoryImpl(
         }
     }
 
-    override suspend fun fetchWeather(lati: String, long: String, lang: String){
-        weatherNetworkDataSource.fetchWeather(
-            locationProvider.getPreferredLocationString(),
-            Locale.getDefault().language
-        )
+    private suspend fun initWeatherData() {
+        val lastWeatherLocation = weatherLocationDao.getLocationNonLive()
+        if(lastWeatherLocation == null){
+            fetchWeather()
+            return
+        }
+        if(isUpdateFreq(lastWeatherLocation.zonedDateTime)){
+            fetchWeather()
+        }
     }
 
     private fun presistFetchedWeather(fetchedWeather: WeatherResponse){
         GlobalScope.launch(Dispatchers.IO){
             currentWeatherDao.upsert(fetchedWeather.currentWeatherEntry)
             hourlyWeatherDao.deleteOldEntries()
-            hourlyWeatherDao.insert(fetchedWeather.hourlyWeatherEntries.Hourlyentries)
+            hourlyWeatherDao.insert(fetchedWeather.hourlyWeatherEntries.hourlyentries)
             dailyWeatherDao.deleteOldEntries()
             dailyWeatherDao.insert(fetchedWeather.dailyWeatherEntries.dailyentries)
-            // weatherLocationDao.upsert(fetchedWeather.location)
+            weatherLocationDao.upsert(WeatherLocation(fetchedWeather.latitude,fetchedWeather.longitude,fetchedWeather.timezone,fetchedWeather.currentWeatherEntry.time))
         }
     }
 
     override suspend fun getCurrentWeather(): LiveData<CurrentWeatherEntry> {
         return withContext(Dispatchers.IO) {
+            initWeatherData()
             return@withContext currentWeatherDao.getWeather()
         }
     }
 
     override suspend fun getHourlyWeatherList(): LiveData<List<HourlyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
+            initWeatherData()
             return@withContext hourlyWeatherDao.getHourlyWeather()
         }
     }
 
     override suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
+            initWeatherData()
             return@withContext dailyWeatherDao.getDailyWeather()
         }
     }
 
     override suspend fun getWeatherLocation(): LiveData<WeatherLocation> {
         return withContext(Dispatchers.IO) {
+            initWeatherData()
             return@withContext weatherLocationDao.getLocation()
         }
+    }
+
+    private suspend fun fetchWeather(){
+        weatherNetworkDataSource.fetchWeather(
+            locationProvider.getPreferredLocationString(),
+            settingsProvider.getPreferredLanguage()
+        )
+    }
+
+    private fun isUpdateFreq(lastFetchTime: ZonedDateTime): Boolean {
+        val updateFrequency = settingsProvider.getPreferredUpdateFrequency().toLong()
+        val minutesAgo = ZonedDateTime.now().minusMinutes(updateFrequency) //update frequency
+        return lastFetchTime.isBefore(minutesAgo)
     }
 
 }

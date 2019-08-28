@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class HourlyWeatherEntry (
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val time: Int,
+    val time: Long,
     val icon: String,
     val precipProbability: Double,
     val temperature: Double,

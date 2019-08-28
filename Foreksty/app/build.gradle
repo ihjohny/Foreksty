@@ -25,6 +25,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        def darkSkyApiKey = properties.getProperty("dark_sky_api_key", "")
+
+        it.buildConfigField 'String', "DARK_SKY_API_KEY", darkSkyApiKey
+
+        it.resValue 'string', "dark_sky_api_key", darkSkyApiKey
+
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -83,4 +93,7 @@ dependencies {
     //kodein
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    //Better date time support
+    implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 }

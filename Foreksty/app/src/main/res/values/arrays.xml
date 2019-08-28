@@ -14,30 +14,30 @@
     </string-array>
 
     <string-array name="unit_system_entries">
-        <item>Metric</item>
-        <item>Imperial</item>
+        <item>Metric (ºC)</item>
+        <item>Imperial (ºF)</item>
     </string-array>
 
     <string-array name="unit_system_values">
-        <item>METRIC</item>
-        <item>IMPERIAL</item>
+        <item>si</item>
+        <item>us</item>
     </string-array>
 
     <string-array name="language_entries">
-        <item>Bangla</item>
         <item>English</item>
+        <item>Bangla</item>
     </string-array>
 
     <string-array name="language_values">
-        <item>BAN</item>
-        <item>EN</item>
+        <item>en</item>
+        <item>bn</item>
     </string-array>
 
     <string-array name="update_freq_entries">
         <item>15 Minutes</item>
         <item>30 Minutes</item>
-        <item>60 Minutes</item>
-        <item>90 Minutes</item>
+        <item>1 Hour</item>
+        <item>2 Hour</item>
     </string-array>
 
     <string-array name="update_freq_values">

@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class HourlyDataContainer (
     @SerializedName("data")
-    val Hourlyentries: List<HourlyWeatherEntry>
+    val hourlyentries: List<HourlyWeatherEntry>
 )

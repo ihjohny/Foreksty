@@ -3,11 +3,12 @@ package com.aappeye.foreksty.data.db.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
 @Entity(tableName = "daily_weather")
 data class DailyWeatherEntry (
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val time: Int,
+    val time: Long,
     val summary: String,
     val icon: String,
     val sunriseTime: Int,

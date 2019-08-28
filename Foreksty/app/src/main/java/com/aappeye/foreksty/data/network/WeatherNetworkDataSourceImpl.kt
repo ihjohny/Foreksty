@@ -1,11 +1,13 @@
 package com.aappeye.foreksty.data.network
 
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.aappeye.foreksty.internal.NoConnectivityException
 import java.net.SocketTimeoutException
+
 
 class WeatherNetworkDataSourceImpl(
     private val apiWeatherService: ApiWeatherService
@@ -24,7 +26,7 @@ class WeatherNetworkDataSourceImpl(
                 _downloadedWeather.postValue(fetchWeather.body())
             }
             else{
-
+                Log.e("Connectivity","Data fetch failed ")
             }
         }
         catch (e: SocketTimeoutException){

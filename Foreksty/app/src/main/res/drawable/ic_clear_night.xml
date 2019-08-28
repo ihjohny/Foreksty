@@ -1,0 +1,15 @@
+<vector android:height="50dp" android:viewportHeight="64"
+    android:viewportWidth="64" android:width="50dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#f9bb4b" android:pathData="m30,3a29.835,29.835 0,0 0,-14 4,35.5 35.5,0 0,1 6,-1c12.7,0 22,10.3 22,23a23,23 0,0 1,-23 23,22.166 22.166,0 0,1 -17,-7.932 28.467,28.467 0,0 0,26 16.932,29 29,0 0,0 0,-58z"/>
+    <path android:fillColor="#eaa434" android:pathData="m50,45a3,3 0,0 1,-3 -3h2a1,1 0,0 0,2 0h2a3,3 0,0 1,-3 3z"/>
+    <path android:fillColor="#eaa434" android:pathData="m34,57a3,3 0,0 1,-3 -3h2a1,1 0,0 0,2 0h2a3,3 0,0 1,-3 3z"/>
+    <path android:fillColor="#eaa434" android:pathData="m46,49h-2a1,1 0,0 0,-2 0h-2a3,3 0,0 1,6 0z"/>
+    <path android:fillColor="#eaa434" android:pathData="m53,34h-2a1,1 0,0 0,-2 0h-2a3,3 0,0 1,6 0z"/>
+    <path android:fillColor="#ffd782" android:pathData="m53,27h2v2h-2z"/>
+    <path android:fillColor="#ffd782" android:pathData="m45,38h2v2h-2z"/>
+    <path android:fillColor="#ffd782" android:pathData="m48,23h2v2h-2z"/>
+    <path android:fillColor="#ffd782" android:pathData="m42,52h2v2h-2z"/>
+    <path android:fillColor="#87cee9" android:pathData="m26,39a3,3 0,0 1,-3 -3,1 1,0 0,0 -2,0 3,3 0,0 1,-3 3,1 1,0 0,0 0,2 3,3 0,0 1,3 3,1 1,0 0,0 2,0 3,3 0,0 1,3 -3,1 1,0 0,0 0,-2zM22,41.031a4.988,4.988 0,0 0,-1.031 -1.031,4.988 4.988,0 0,0 1.031,-1.031 4.988,4.988 0,0 0,1.031 1.031,4.988 4.988,0 0,0 -1.031,1.031z"/>
+    <path android:fillColor="#87cee9" android:pathData="m36,31a3,3 0,0 1,-3 -3,1 1,0 0,0 -2,0 3,3 0,0 1,-3 3,1 1,0 0,0 0,2 3,3 0,0 1,3 3,1 1,0 0,0 2,0 3,3 0,0 1,3 -3,1 1,0 0,0 0,-2zM32,33.031a4.988,4.988 0,0 0,-1.031 -1.031,4.988 4.988,0 0,0 1.031,-1.031 4.988,4.988 0,0 0,1.031 1.031,4.988 4.988,0 0,0 -1.031,1.031z"/>
+    <path android:fillColor="#87cee9" android:pathData="m20,22a1,1 0,0 0,0 -2,3 3,0 0,1 -3,-3 1,1 0,0 0,-2 0,3 3,0 0,1 -3,3 1,1 0,0 0,0 2,3 3,0 0,1 3,3 1,1 0,0 0,2 0,3 3,0 0,1 3,-3zM14.969,21a4.988,4.988 0,0 0,1.031 -1.031,4.988 4.988,0 0,0 1.031,1.031 4.988,4.988 0,0 0,-1.031 1.031,4.988 4.988,0 0,0 -1.031,-1.031z"/>
+</vector>

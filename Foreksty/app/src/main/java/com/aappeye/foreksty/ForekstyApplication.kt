@@ -7,10 +7,13 @@ import com.aappeye.foreksty.data.db.WeatherDatabase
 import com.aappeye.foreksty.data.network.*
 import com.aappeye.foreksty.data.provider.LocationProvider
 import com.aappeye.foreksty.data.provider.LocationProviderImpl
+import com.aappeye.foreksty.data.provider.SettingsProvider
+import com.aappeye.foreksty.data.provider.SettingsProviderImpl
 import com.aappeye.foreksty.data.repository.ForecastRepository
 import com.aappeye.foreksty.data.repository.ForecastRepositoryImpl
 import com.aappeye.foreksty.ui.weather.current.CurrentWeatherViewModelFactory
 import com.google.android.gms.location.LocationServices
+import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -32,16 +35,18 @@ class ForekstyApplication: Application(), KodeinAware {
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { ApiWeatherService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
+        bind<SettingsProvider>() with singleton { SettingsProviderImpl(instance()) }
         bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
         bind<LocationProvider>() with singleton { LocationProviderImpl(instance(),instance()) }
-        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance(), instance(), instance() ) }
-       bind() from provider { CurrentWeatherViewModelFactory(instance()) }
+        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance(), instance(), instance(), instance() ) }
+       bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
  //       bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
   //      bind() from factory { detailDate: LocalDate -> FutureDetailWeatherViewModelFactory(detailDate, instance(), instance()) }
     }
 
     override fun onCreate() {
         super.onCreate()
+        AndroidThreeTen.init(this)
         PreferenceManager.setDefaultValues(this,R.xml.preference,false)
     }
 }

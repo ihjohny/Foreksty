@@ -8,44 +8,58 @@
     <string name="app_developer_text">Developer : Imam Hossain Johny</string>
     <string name="app_company_text">Copyright © 2019 Aappeye Inc.</string>
 
+    <string name="darksky_api_key">47b5e0172fdf465bfed592cbaa0070ca</string>
+
     <string name="current_weather">Current Weather</string>
     <string name="today_weather">Today\'s Weather</string>
     <string name="this_week">This Week</string>
     <string name="settings">Settings</string>
+    <string name="loading">Loading</string>
 
     <string name="refresh">Refresh</string>
     <string name="location">Location</string>
+    
+    <string name="percentage">%</string>
+    <string name="degree_celsius">ºC</string>
+    <string name="degree_fahrenheit">ºF</string>
+    <string name="meters_per_second">m/s</string>
+    <string name="miles_per_hour">mph</string>
+    <string name="kilometers">km</string>
+    <string name="miles">mi</string>
+    <string name="hectopascals">hPa</string>
+    <string name="millibar">mb</string>
 
-    <string name="temp_value">26ºC</string>
-    <string name="feels">Feels like 28ºC</string>
+
+    <string name="temp_value">0ºC</string>
+    <string name="feels">Feels like </string>
     <string name="state_icon_description">Weather State Icon</string>
     <string name="state">Moderate or heavy rain shower</string>
     <string name="last_update">Last Update</string>
-    <string name="time">8:20PM</string>
+    <string name="time">00:00PM</string>
 
     <string name="wind_icon_description">Wind Icon</string>
     <string name="wind">Wind</string>
-    <string name="wind_value">ESE, 8KPH</string>
+    <string name="wind_value">ESE, 0KPH</string>
 
     <string name="prec_icon_description">Preciption Icon</string>
     <string name="prec">Precipition</string>
-    <string name="prec_value">2.5MM</string>
+    <string name="prec_value">0%</string>
 
     <string name="hum_icon_description">Humidity Icon</string>
     <string name="hum">Humidity</string>
-    <string name="hum_value">78%</string>
+    <string name="hum_value">0%</string>
 
     <string name="pre_icon_description">Pressure Icon</string>
     <string name="pre">Pressure</string>
-    <string name="pre_value">876MB</string>
+    <string name="pre_value">0MB</string>
 
     <string name="uv_icon_description">UV Index Icon</string>
     <string name="uv">UV Index</string>
-    <string name="uv_value">2</string>
+    <string name="uv_value">0</string>
 
     <string name="vis_icon_description">Visibility Icon</string>
     <string name="vis">Visibility</string>
-    <string name="vis_value">15KM</string>
+    <string name="vis_value">0</string>
 
     <string name="day">Sunday</string>
     <string name="date">27-jan-2019</string>
@@ -53,22 +67,22 @@
     <string name="day_temp">28ºC</string>
     <string name="min">Min</string>
     <string name="max">Max</string>
-    <string name="min_value">27ºC</string>
-    <string name="max_value">29ºC</string>
+    <string name="min_value">0</string>
+    <string name="max_value">0</string>
 
     <string name="details">Details(Average)</string>
     <string name="hourly_weather">Hourly Weather</string>
     <string name="chance_prec">Chance of Precipitation</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunrise_icon_description">Sunrise Icon</string>
-    <string name="sunrise_value">5:30AM</string>
+    <string name="sunrise_value">00:00</string>
     <string name="sunset">Sunset</string>
     <string name="sunset_icon_description">Sunset Icon</string>
-    <string name="sunset_value">6:30AM</string>
+    <string name="sunset_value">00:00</string>
 
-    <string name="hwi_temp">28ºC</string>
+    <string name="hwi_temp">0ºC</string>
     <string name="hwi_state_icon_description">Hour Weather State Icon</string>
-    <string name="hwi_time">12AM</string>
+    <string name="hwi_time">00:00</string>
 
     <string name="icon_description">Icon Description</string>
 
@@ -85,12 +99,12 @@
     <string name="select_unit_system">Select Unit System</string>
     <string name="unit_system">Unit System</string>
     <string name="unit_system_key">unit_system</string>
-    <string name="unit_system_default_value">METRIC</string>
+    <string name="unit_system_default_value">si</string>
 
     <string name="select_language">Select Language</string>
     <string name="language">Language</string>
     <string name="language_key">language</string>
-    <string name="language_default_value">EN</string>
+    <string name="language_default_value">en</string>
 
     <string name="update_freq">Update Frequency</string>
     <string name="update_freq_key">update_freq</string>

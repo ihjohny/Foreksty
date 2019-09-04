@@ -26,7 +26,7 @@ import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 
-class CurrentWeather :  ScopedFragment(), KodeinAware {
+class CurrentWeather : ScopedFragment(), KodeinAware {
 
     override val kodein by kodein()
     private val viewModelFactory: CurrentWeatherViewModelFactory by instance()
@@ -46,18 +46,19 @@ class CurrentWeather :  ScopedFragment(), KodeinAware {
         weatherIconMap = context?.let { WeatherIcons.map(it) }
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CurrentWeatherViewModel::class.java)
-        bindUI()
+        bindUi()
     }
 
-    private fun bindUI() = launch{
+    private fun bindUi() = launch{
 
         val currentWeather= viewModel.weather.await()
         val weatherLocation = viewModel.weatherLocation.await()
 
-        weatherLocation.observe(this@CurrentWeather, Observer {location ->
-            if(location == null) return@Observer
+        weatherLocation.observe(this@CurrentWeather, Observer {weatherLocation ->
+            if(weatherLocation == null) return@Observer
            // updateLocation(location.latitude, location.longitude)
         })
+
         currentWeather.observe(this@CurrentWeather,  Observer {
 
             if(it == null) return@Observer
@@ -122,7 +123,7 @@ class CurrentWeather :  ScopedFragment(), KodeinAware {
 
     private fun updateLastUpdate(time: Long) {
         val dt = Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        cwf_cv0_time_id.text = dt.format(DateTimeFormatter.ofPattern("hh:mm a dd-MM-yyyy", Locale.getDefault()))
+        cwf_cv0_time_id.text = dt.format(DateTimeFormatter.ofPattern("hh:mm a dd-MMM-yyyy", Locale.getDefault()))
     }
 
     private fun updateStateIcon(icon: String) {

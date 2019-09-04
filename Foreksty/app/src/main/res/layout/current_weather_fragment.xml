@@ -645,7 +645,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <ProgressBar
-                android:id="@+id/cwf_progressBar_id"
+                android:id="@+id/cwf_progressbar_id"
                 android:layout_width="51dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="8dp"
@@ -671,7 +671,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cwf_progressBar_id"
+                app:layout_constraintTop_toBottomOf="@+id/cwf_progressbar_id"
                 app:layout_constraintVertical_bias="0.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

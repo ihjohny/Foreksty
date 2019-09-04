@@ -8,7 +8,7 @@ import com.aappeye.foreksty.ui.base.WeatherViewModel
 
  class CurrentWeatherViewModel(
      private val forecastRepository: ForecastRepository,
-     private val settingsProvider: SettingsProvider
+     settingsProvider: SettingsProvider
 ) : WeatherViewModel(forecastRepository, settingsProvider) {
 
     val weather by lazyDeferred {

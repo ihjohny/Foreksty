@@ -12,6 +12,8 @@ import com.aappeye.foreksty.data.provider.SettingsProviderImpl
 import com.aappeye.foreksty.data.repository.ForecastRepository
 import com.aappeye.foreksty.data.repository.ForecastRepositoryImpl
 import com.aappeye.foreksty.ui.weather.current.CurrentWeatherViewModelFactory
+import com.aappeye.foreksty.ui.weather.today.TodayWeatherViewModelFactory
+import com.aappeye.foreksty.ui.weather.week.WeekWeatherViewModelFactory
 import com.google.android.gms.location.LocationServices
 import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
@@ -39,8 +41,9 @@ class ForekstyApplication: Application(), KodeinAware {
         bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
         bind<LocationProvider>() with singleton { LocationProviderImpl(instance(),instance()) }
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance(), instance(), instance(), instance() ) }
-       bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
- //       bind() from provider { FutureListWeatherViewModelFactory(instance(), instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
+        bind() from provider { TodayWeatherViewModelFactory(instance(), instance()) }
+        bind() from provider { WeekWeatherViewModelFactory(instance(), instance()) }
   //      bind() from factory { detailDate: LocalDate -> FutureDetailWeatherViewModelFactory(detailDate, instance(), instance()) }
     }
 

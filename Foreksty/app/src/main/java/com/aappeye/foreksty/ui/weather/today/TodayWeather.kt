@@ -1,21 +1,27 @@
 package com.aappeye.foreksty.ui.weather.today
 
-import androidx.lifecycle.ViewModelProviders
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.get
 import com.aappeye.foreksty.R
+import com.aappeye.foreksty.ui.base.ScopedFragment
+import com.aappeye.foreksty.ui.weather.current.CurrentWeatherViewModelFactory
+import com.aappeye.foreksty.utils.WeatherIcons
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
 
-class TodayWeather : Fragment() {
+class TodayWeather : ScopedFragment(), KodeinAware {
 
-    companion object {
-        fun newInstance() = TodayWeather()
-    }
-
+    override val kodein by kodein()
+    private val viewModelFactory: TodayWeatherViewModelFactory by instance()
     private lateinit var viewModel: TodayWeatherViewModel
+    private var weatherIconMap: Map<String, Drawable>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +32,14 @@ class TodayWeather : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TodayWeatherViewModel::class.java)
-        // TODO: Use the ViewModel
+        weatherIconMap = context?.let { WeatherIcons.map(it) }
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(TodayWeatherViewModel::class.java)
+        bindUi()
+    }
+
+    private fun bindUi() {
+
     }
 
 }

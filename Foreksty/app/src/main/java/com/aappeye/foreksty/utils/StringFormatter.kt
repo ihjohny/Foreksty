@@ -1,5 +1,11 @@
 package com.aappeye.foreksty.utils
 
+import kotlinx.android.synthetic.main.current_weather_fragment.*
+import org.threeten.bp.Instant
+import org.threeten.bp.ZoneId
+import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
+
 object StringFormatter {
 
     const val percentage = "%"
@@ -32,5 +38,19 @@ object StringFormatter {
 
     fun getPercentage(value: Double): String =
         "${(value*100).toInt()}${percentage}"
+
+    fun getTime(time: Long): String =
+        Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            .format(DateTimeFormatter.ofPattern("hh:mm a", Locale.getDefault()))
+
+    fun getDay(time: Long): String =
+        Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            .format(DateTimeFormatter.ofPattern("EEEE", Locale.getDefault()))
+
+    fun getDate(time: Long): String =
+        Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            .format(DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.getDefault()))
+
+
 
 }

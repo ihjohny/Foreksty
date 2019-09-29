@@ -1,12 +1,12 @@
 package com.aappeye.foreksty.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
+import android.database.sqlite.SQLiteDatabase
+
+
 
 @Dao
 interface DailyWeatherDao {
@@ -16,6 +16,14 @@ interface DailyWeatherDao {
     @Query("select * from daily_weather")
     fun getDailyWeather(): LiveData<List<DailyWeatherEntry>>
 
+    @Query("select * from daily_weather where time == (select min(time) from daily_weather)")
+    fun getTodayWeather(): LiveData<DailyWeatherEntry>
+
     @Query("delete from daily_weather")
     fun deleteOldEntries()
+
+/*
+    @Query("alter table daily_weather set auto_increment = 1")
+    fun updateSeq()*/
+
 }

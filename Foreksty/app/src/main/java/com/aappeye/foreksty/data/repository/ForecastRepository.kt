@@ -9,6 +9,7 @@ import com.aappeye.foreksty.data.db.entity.WeatherLocation
 interface ForecastRepository {
     suspend fun getCurrentWeather(): LiveData<CurrentWeatherEntry>
     suspend fun getHourlyWeatherList(): LiveData<List<HourlyWeatherEntry>>
+    suspend fun getTodayWeather(): LiveData<DailyWeatherEntry>
     suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>>
     suspend fun getWeatherLocation(): LiveData<WeatherLocation>
 

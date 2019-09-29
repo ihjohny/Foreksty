@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
@@ -26,8 +27,7 @@
                     android:id="@+id/wi_day_id"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/margin_small"
-                    app:layout_constraintTop_toTopOf="@+id/wi_temp_id"
-                    app:layout_constraintBottom_toTopOf="@+id/wi_date_id"
+                    app:layout_constraintTop_toTopOf="@+id/wi_stateIcon_id"
             />
 
             <TextView
@@ -41,79 +41,77 @@
             />
 
             <ImageView
+                    android:id="@+id/wi_stateIcon_id"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/rain"
-                    android:id="@+id/wi_stateIcon_id"
                     android:contentDescription="@string/temp_icon_description"
-                    app:layout_constraintTop_toTopOf="@+id/wi_temp_id"
-                    app:layout_constraintEnd_toStartOf="@+id/wi_temp_id"
-                    android:layout_marginEnd="@dimen/margin_tiny"
-                    app:layout_constraintBottom_toBottomOf="@+id/wi_temp_id"/>
-
-            <TextView
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:text="@string/day_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/wi_temp_id"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/margin_small" app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="8dp"/>
-
-            <TextView
-                    android:text="@string/max"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/wi_max_id"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/wi_maxValue_id"
-                    app:layout_constraintEnd_toStartOf="@+id/wi_maxValue_id"/>
-
-            <TextView
-                    android:text="@string/min"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/wi_min_id"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/wi_minValue_id"
-                    app:layout_constraintEnd_toStartOf="@+id/wi_minValue_id"/>
-
-            <TextView
-                    android:text="@string/min_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/wi_minValue_id"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
-                    app:layout_constraintEnd_toStartOf="@+id/wi_max_id"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_tiny"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                    android:id="@+id/wi_max_id"
+                    android:src="@drawable/ic_arrow_upward_grey_24dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:contentDescription="@string/icon_description"
+                    app:layout_constraintEnd_toStartOf="@+id/wi_maxValue_id"
+                    app:layout_constraintTop_toTopOf="@+id/wi_maxValue_id"
+                    app:layout_constraintBottom_toBottomOf="@+id/wi_maxValue_id"/>
 
             <TextView
-                    android:text="@string/max_value"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:text="@string/temp_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/wi_maxValue_id"
-                    app:layout_constraintTop_toBottomOf="@+id/wi_temp_id"
-                    app:layout_constraintEnd_toEndOf="@+id/wi_temp_id"
-                    android:layout_marginTop="@dimen/margin_tiny"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintEnd_toStartOf="@+id/wi_min_id"
+                    android:layout_marginEnd="@dimen/margin_tiny"
+                    app:layout_constraintTop_toTopOf="@+id/wi_min_id"
+                    app:layout_constraintBottom_toBottomOf="@+id/wi_min_id"
+                    tools:text="@string/temp_value"
+                    android:textColor="#000"/>
+
+            <ImageView
+                    android:id="@+id/wi_min_id"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_arrow_downward_grey_24dp"
+                    android:contentDescription="@string/icon_description"
+                    app:layout_constraintEnd_toStartOf="@+id/wi_minValue_id"
+                    app:layout_constraintTop_toTopOf="@+id/wi_minValue_id"
+                    app:layout_constraintBottom_toBottomOf="@+id/wi_minValue_id"/>
+
+            <TextView
+                    android:id="@+id/wi_minValue_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temp_value"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="@+id/wi_stateIcon_id"
+                    app:layout_constraintBottom_toBottomOf="@+id/wi_stateIcon_id"
+                    app:layout_constraintEnd_toStartOf="@+id/wi_stateIcon_id"
+                    android:layout_marginEnd="@dimen/margin_tiny"
+                    tools:text="@string/temp_value"
+                    android:textColor="#000"/>
 
             <TextView
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     android:text="@string/state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wi_state_id"
-                    app:layout_constraintTop_toBottomOf="@+id/wi_maxValue_id"
-                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:id="@+id/wi_summary_id"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_marginStart="@dimen/margin_small"
+                    app:layout_constraintTop_toBottomOf="@+id/wi_date_id"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/wi_temp_id"
-                    app:layout_constraintHorizontal_bias="0.0"/>
+                    app:layout_constraintEnd_toEndOf="@+id/wi_stateIcon_id"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="@dimen/margin_tiny"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,7 +210,7 @@
                     android:text="@string/sunrise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wi_sunrise_id" android:layout_marginStart="8dp"
+                    android:id="@+id/twf_cv1_sunrise_id" android:layout_marginStart="8dp"
                     app:layout_constraintStart_toEndOf="@+id/wi_sunriseIcon_id"
                     app:layout_constraintTop_toTopOf="@+id/wi_sunriseIcon_id"
                     app:layout_constraintBottom_toBottomOf="@+id/wi_sunriseIcon_id"/>
@@ -221,7 +219,7 @@
                     android:text="@string/wind_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wi_windValue_id"
+                    android:id="@+id/twf_cv1_windValue_id"
                     app:layout_constraintStart_toEndOf="@+id/wi_wind_id"
                     android:layout_marginStart="8dp"
                     app:layout_constraintTop_toTopOf="@+id/wi_wind_id"
@@ -232,7 +230,7 @@
                     android:text="@string/hum_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wi_humValue_id"
+                    android:id="@+id/twf_cv1_humValue_id"
                     app:layout_constraintStart_toEndOf="@+id/wi_hum_id"
                     android:layout_marginStart="8dp"
                     app:layout_constraintTop_toTopOf="@+id/wi_hum_id"
@@ -243,7 +241,7 @@
                     android:text="@string/uv_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wi_uvValue_id"
+                    android:id="@+id/twf_cv1_uvValue_id"
                     app:layout_constraintStart_toEndOf="@+id/wi_uv_id"
                     android:layout_marginStart="8dp"
                     app:layout_constraintTop_toTopOf="@+id/wi_uv_id"
@@ -255,10 +253,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/wi_sunriseValue_id"
-                    app:layout_constraintStart_toEndOf="@+id/wi_sunrise_id"
+                    app:layout_constraintStart_toEndOf="@+id/twf_cv1_sunrise_id"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="@+id/wi_sunrise_id"
-                    app:layout_constraintBottom_toBottomOf="@+id/wi_sunrise_id"/>
+                    app:layout_constraintTop_toTopOf="@+id/twf_cv1_sunrise_id"
+                    app:layout_constraintBottom_toBottomOf="@+id/twf_cv1_sunrise_id"/>
 
             <ImageView
                     android:layout_width="18dp"

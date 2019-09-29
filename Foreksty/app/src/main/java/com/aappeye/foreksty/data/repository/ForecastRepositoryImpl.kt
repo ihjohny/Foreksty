@@ -73,6 +73,13 @@ class ForecastRepositoryImpl(
         }
     }
 
+    override suspend fun getTodayWeather(): LiveData<DailyWeatherEntry> {
+        return withContext(Dispatchers.IO){
+            initWeatherData()
+            return@withContext dailyWeatherDao.getTodayWeather()
+        }
+    }
+
     override suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
             initWeatherData()

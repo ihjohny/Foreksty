@@ -33,17 +33,16 @@ class WeekWeatherAdapter(
 
                 itemView.wi_day_id.text = getDay(time)
                 itemView.wi_date_id.text = getDate(time)
-                itemView. wi_temp_id.text = getTemperaturesWithUnit((temperatureMax+temperatureMin)/2, isMetricUnit)
                 itemView.wi_minValue_id.text = getTemperaturesWithUnit(temperatureMin, isMetricUnit)
                 itemView.wi_maxValue_id.text = getTemperaturesWithUnit(temperatureMax, isMetricUnit)
-                itemView.wi_state_id.text = summary
+                itemView.wi_summary_id.text = summary
                 itemView.wi_stateIcon_id.setImageDrawable(weatherIconMap[icon])
 
-               itemView.wi_windValue_id.text = getSpeedWithUnit(windSpeed, isMetricUnit)
+               itemView.twf_cv1_windValue_id.text = getSpeedWithUnit(windSpeed, isMetricUnit)
                 itemView.wi_precValue_id.text = getPercentage(precipProbability)
-                itemView.wi_humValue_id.text = getPercentage(humidity)
+                itemView.twf_cv1_humValue_id.text = getPercentage(humidity)
                 itemView.wi_preValue_id.text = getPressureWithUnit(pressure, isMetricUnit)
-                itemView.wi_uvValue_id.text = "${uvIndex.toInt()}"
+                itemView.twf_cv1_uvValue_id.text = "${uvIndex.toInt()}"
                 itemView.wi_visValue_id.text = getDistanceWithUnit(visibility, isMetricUnit)
                 itemView.wi_sunriseValue_id.text = getTime(sunriseTime)
                 itemView.wi_sunsetValue_id.text = getTime(sunsetTime)

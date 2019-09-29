@@ -2,50 +2,86 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="50dp"
-        android:layout_height="90dp"
-        app:cardElevation="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        app:cardElevation=".5dp"
         android:id="@+id/hour_weather_item_id">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="@dimen/margin_tiny"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/hwi_layout_id">
 
+        <ImageView
+                android:id="@+id/hwi_stateIcon_id"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/rain"
+                android:contentDescription="@string/state_icon_description"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+                android:id="@+id/hwi_tempValue_id"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:text="@string/hwi_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/hwi_temp_id"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="@dimen/margin_tiny"/>
-
-        <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/rain"
-                android:id="@+id/hwi_stateIcon_id"
-                app:layout_constraintStart_toStartOf="@+id/hwi_temp_id"
-                app:layout_constraintEnd_toEndOf="@+id/hwi_temp_id"
-                android:layout_marginTop="@dimen/margin_tiny"
-                app:layout_constraintTop_toBottomOf="@+id/hwi_temp_id"
-                android:contentDescription="@string/state_icon_description"/>
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/hwi_stateIcon_id"
+                app:layout_constraintEnd_toEndOf="@id/hwi_stateIcon_id"
+                app:layout_constraintTop_toBottomOf="@id/hwi_stateIcon_id"/>
 
         <TextView
+                android:id="@+id/hwi_windValue_id"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:text="@string/wind_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/hwi_tempValue_id"
+                app:layout_constraintEnd_toEndOf="@id/hwi_tempValue_id"
+                app:layout_constraintTop_toBottomOf="@id/hwi_tempValue_id"/>
+
+        <TextView
+                android:id="@+id/hwi_uvValue_id"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:text="@string/uv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/hwi_windValue_id"
+                app:layout_constraintEnd_toEndOf="@id/hwi_windValue_id"
+                app:layout_constraintTop_toBottomOf="@id/hwi_windValue_id"/>
+
+        <TextView
+                android:id="@+id/hwi_visValue_id"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:text="@string/vis_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/hwi_uvValue_id"
+                app:layout_constraintEnd_toEndOf="@id/hwi_uvValue_id"
+                app:layout_constraintTop_toBottomOf="@id/hwi_uvValue_id"/>
+
+        <TextView
+                android:id="@+id/hwi_time_id"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                 android:text="@string/hwi_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/hwi_time_id"
-                app:layout_constraintEnd_toEndOf="@+id/hwi_stateIcon_id"
-                app:layout_constraintStart_toStartOf="@+id/hwi_stateIcon_id"
-                android:layout_marginTop="@dimen/margin_tiny"
-                app:layout_constraintTop_toBottomOf="@+id/hwi_stateIcon_id"/>
+                android:layout_marginTop="@dimen/margin_small"
+                app:layout_constraintEnd_toEndOf="@+id/hwi_visValue_id"
+                app:layout_constraintStart_toStartOf="@+id/hwi_visValue_id"
+                app:layout_constraintTop_toBottomOf="@+id/hwi_visValue_id"
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

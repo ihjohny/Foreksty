@@ -12,5 +12,11 @@ data class HourlyWeatherEntry (
     val icon: String,
     val precipProbability: Double,
     val temperature: Double,
-    val apparentTemperature: Double
+    val apparentTemperature: Double,
+    val windSpeed: Double,
+    val humidity: Double,
+    val pressure: Double,
+    val windBearing: Double,
+    val uvIndex: Double,
+    val visibility: Double
 )

@@ -30,7 +30,7 @@
     <string name="millibar">mb</string>
 
 
-    <string name="temp_value">0ºC</string>
+    <string name="temp_value">20ºC</string>
     <string name="feels">Feels like </string>
     <string name="state_icon_description">Weather State Icon</string>
     <string name="state">Moderate or heavy rain shower</string>
@@ -59,7 +59,7 @@
 
     <string name="vis_icon_description">Visibility Icon</string>
     <string name="vis">Visibility</string>
-    <string name="vis_value">0</string>
+    <string name="vis_value">12 km</string>
 
     <string name="day">Sunday</string>
     <string name="date">27-jan-2019</string>
@@ -71,7 +71,7 @@
     <string name="max_value">0</string>
 
     <string name="details">Details(Average)</string>
-    <string name="hourly_weather">Hourly Weather</string>
+    <string name="hourly_weather">Hourly Weather (Next 48 Hours)</string>
     <string name="chance_prec">Chance of Precipitation</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunrise_icon_description">Sunrise Icon</string>

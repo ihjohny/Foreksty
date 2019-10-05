@@ -90,6 +90,7 @@ class TodayWeather : ScopedFragment(), KodeinAware {
                 adapter = hourlyWeatherAdapter
             }
 
+
         })
     }
 

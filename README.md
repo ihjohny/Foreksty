@@ -2,7 +2,7 @@
 
 
 Foreksty is a simple and nice looking android application that provide weather information. It can provide currently, daily and weekly weather update. User can set notification time for getting weather update via notificaiton.
-<br>Foreksty use Darksky API for weather data source. It is developed by using kotlin and android architecture components like LiveData, ViewModel, Room, Navigation. Following google's MVVM(Model View ViewModel) architecture which enhances separation of concerns. For injecting
+<br><br>Foreksty use Darksky API for weather data source. It is developed by using kotlin and android architecture components like LiveData, ViewModel, Room, Navigation. Following google's MVVM(Model View ViewModel) architecture which enhances separation of concerns. For injecting
 dependencies use Kodein, caching data using Room Persistence library and async task manages using kotlin coroutines.
 
 
@@ -14,7 +14,7 @@ Current Weather | Today's Weather
 
 Week Weather | Settings
 -------------|-----------------
-![alt text](Screenshots/_today_week.png "This Week") | ![alt text](Screenshots/_settings.png "Settings")
+![alt text](Screenshots/_week.png "This Week") | ![alt text](Screenshots/_settings.png "Settings")
 
 
 ### Features:

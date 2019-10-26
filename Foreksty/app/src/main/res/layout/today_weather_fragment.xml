@@ -14,7 +14,6 @@
             android:id="@+id/twf_fetch_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +57,7 @@
             android:layout_height="match_parent">
 
         <LinearLayout
-
+                android:visibility="gone"
                 android:id="@+id/twf_content_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

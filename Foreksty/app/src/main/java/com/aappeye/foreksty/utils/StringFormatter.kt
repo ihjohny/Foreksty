@@ -43,6 +43,10 @@ object StringFormatter {
         Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
             .format(DateTimeFormatter.ofPattern("hh:mm a", Locale.getDefault()))
 
+    fun getHour(time: Long): String =
+        Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            .format(DateTimeFormatter.ofPattern("h a", Locale.getDefault()))
+
     fun getDay(time: Long): String =
         Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
             .format(DateTimeFormatter.ofPattern("EEEE", Locale.getDefault()))

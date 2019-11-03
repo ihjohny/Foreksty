@@ -42,7 +42,7 @@
     <string name="wind_value">ESE, 0KPH</string>
 
     <string name="prec_icon_description">Preciption Icon</string>
-    <string name="prec">Precipition</string>
+    <string name="prec">Precipitation</string>
     <string name="prec_value">0%</string>
 
     <string name="hum_icon_description">Humidity Icon</string>

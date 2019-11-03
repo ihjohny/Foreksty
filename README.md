@@ -10,11 +10,11 @@ dependencies use Kodein, caching data using Room Persistence library and async t
 
 Current Weather | Today's Weather
 -------------|-----------------
-![alt text](Screenshots/_current.png "Current Weather") | ![alt text](Screenshots/_today.png "Today's Weather") 
+![alt text](screenshots/_current.png "Current Weather") | ![alt text](screenshots/_today.png "Today's Weather") 
 
 Week Weather | Settings
 -------------|-----------------
-![alt text](Screenshots/_week.png "This Week") | ![alt text](Screenshots/_settings.png "Settings")
+![alt text](screenshots/_week.png "This Week") | ![alt text](screenshots/_settings.png "Settings")
 
 
 ### Features:

@@ -3,8 +3,8 @@
     <color name="colorPrimary">#42A5F5</color>
     <color name="colorPrimaryDark">#42A5F5</color>
     <color name="colorPrimaryLight">#42A5F5</color>
-    <color name="colorAccent">#F57F17</color>
-    <color name="colorAccentDark">#F9A825</color>
+    <color name="colorAccent">#F9A825</color>
+    <color name="colorAccentDark">#F57F17</color>
     <color name="colorAccentLight">#FFEE58</color>
 
     <color name="overlay_dark_10">#1A000000</color>

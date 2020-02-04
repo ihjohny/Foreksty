@@ -7,9 +7,7 @@
     <string name="app_version_text">Version 1.0 Beta</string>
     <string name="app_developer_text">Developer : Imam Hossain Johny</string>
     <string name="app_company_text">Copyright © 2019 Aappeye Inc.</string>
-
-    <string name="darksky_api_key">47b5e0172fdf465bfed592cbaa0070ca</string>
-
+    
     <string name="current_weather">Current Weather</string>
     <string name="today_weather">Today\'s Weather</string>
     <string name="this_week">This Week</string>

@@ -22,8 +22,4 @@ interface DailyWeatherDao {
     @Query("delete from daily_weather")
     fun deleteOldEntries()
 
-/*
-    @Query("alter table daily_weather set auto_increment = 1")
-    fun updateSeq()*/
-
 }

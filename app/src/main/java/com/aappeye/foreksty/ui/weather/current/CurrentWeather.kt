@@ -8,6 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.aappeye.foreksty.R
+import com.aappeye.foreksty.data.db.WeatherDatabase
+import com.aappeye.foreksty.data.network.ApiWeatherService
+import com.aappeye.foreksty.data.network.ConnectivityInterceptor
+import com.aappeye.foreksty.data.network.ConnectivityInterceptorImpl
+import com.aappeye.foreksty.data.network.WeatherNetworkDataSourceImpl
+import com.aappeye.foreksty.data.provider.LocationProviderImpl
+import com.aappeye.foreksty.data.provider.SettingsProviderImpl
+import com.aappeye.foreksty.data.repository.ForecastRepository
+import com.aappeye.foreksty.data.repository.ForecastRepositoryImpl
 import com.aappeye.foreksty.ui.base.ScopedFragment
 import com.aappeye.foreksty.utils.StringFormatter.getDistanceWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getPercentage
@@ -15,6 +24,8 @@ import com.aappeye.foreksty.utils.StringFormatter.getPressureWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getSpeedWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getTemperaturesWithUnit
 import com.aappeye.foreksty.utils.WeatherIcons
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
@@ -26,11 +37,10 @@ import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 
 
-class CurrentWeather : ScopedFragment(), KodeinAware {
+class CurrentWeather : ScopedFragment(){
 
-    override val kodein by kodein()
-    private val viewModelFactory: CurrentWeatherViewModelFactory by instance()
-
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var viewModelFactory: CurrentWeatherViewModelFactory
     private lateinit var viewModel: CurrentWeatherViewModel
     private var weatherIconMap: Map<String, Drawable>? = null
 
@@ -43,7 +53,27 @@ class CurrentWeather : ScopedFragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        weatherIconMap = context?.let { WeatherIcons.map(it) }
+        weatherIconMap = WeatherIcons.map(context!!)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context!!)
+
+        var settingsProvider = SettingsProviderImpl(context!!)
+        var locationProvider = LocationProviderImpl(fusedLocationProviderClient,context!!)
+        var connectivityInterceptor = ConnectivityInterceptorImpl(context!!)
+        var apiWeatherService = ApiWeatherService(connectivityInterceptor)
+
+        var database = WeatherDatabase(context!!)
+        var currentWeatherDao = database.currentWeatherDao()
+        var hourlyWeatherDao = database.hourlyWeatherDao()
+        var dailyWeatherDao = database.dailyWeatherDao()
+        var weatherLocationDao = database.weatherLocationDao()
+        var weatherNetworkDataSource = WeatherNetworkDataSourceImpl(apiWeatherService)
+
+
+        var forecastRepository = ForecastRepositoryImpl(currentWeatherDao, hourlyWeatherDao, dailyWeatherDao, weatherLocationDao,weatherNetworkDataSource,settingsProvider, locationProvider)
+
+
+        viewModelFactory = CurrentWeatherViewModelFactory(forecastRepository, settingsProvider)
+
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CurrentWeatherViewModel::class.java)
         bindUi()

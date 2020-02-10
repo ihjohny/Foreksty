@@ -25,27 +25,7 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
 
-class ForekstyApplication: Application(), KodeinAware {
-    override val kodein: Kodein = Kodein.lazy {
-        import(androidXModule(this@ForekstyApplication))
-
-        bind() from singleton { WeatherDatabase(instance()) }
-        bind() from singleton { instance<WeatherDatabase>().currentWeatherDao() }
-        bind() from singleton { instance<WeatherDatabase>().hourlyWeatherDao() }
-        bind() from singleton { instance<WeatherDatabase>().dailyWeatherDao() }
-        bind() from singleton { instance<WeatherDatabase>().weatherLocationDao() }
-        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
-        bind() from singleton { ApiWeatherService(instance()) }
-        bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
-        bind<SettingsProvider>() with singleton { SettingsProviderImpl(instance()) }
-        bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
-        bind<LocationProvider>() with singleton { LocationProviderImpl(instance(),instance()) }
-        bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance(), instance(), instance(), instance() ) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
-        bind() from provider { TodayWeatherViewModelFactory(instance(), instance()) }
-        bind() from provider { WeekWeatherViewModelFactory(instance(), instance()) }
-  //      bind() from factory { detailDate: LocalDate -> FutureDetailWeatherViewModelFactory(detailDate, instance(), instance()) }
-    }
+class ForekstyApplication: Application(){
 
     override fun onCreate() {
         super.onCreate()

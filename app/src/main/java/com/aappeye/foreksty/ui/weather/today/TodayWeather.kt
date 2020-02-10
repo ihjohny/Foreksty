@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aappeye.foreksty.R
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
 import com.aappeye.foreksty.ui.base.ScopedFragment
+import com.aappeye.foreksty.ui.weather.current.CurrentWeatherViewModelFactory
 import com.aappeye.foreksty.utils.ChartValueFormatter
 import com.aappeye.foreksty.utils.StringFormatter.getDate
 import com.aappeye.foreksty.utils.StringFormatter.getDay
@@ -27,19 +28,14 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IFillFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.today_weather_fragment.*
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
 
 
-class TodayWeather : ScopedFragment(), KodeinAware {
+class TodayWeather : ScopedFragment(){
 
-    override val kodein by kodein()
-    private val viewModelFactory: TodayWeatherViewModelFactory by instance()
+    private lateinit var viewModelFactory: CurrentWeatherViewModelFactory
     private lateinit var viewModel: TodayWeatherViewModel
     private var weatherIconMap: Map<String, Drawable>? = null
     private lateinit var hourlyWeatherAdapter: HourlyWeatherAdapter

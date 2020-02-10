@@ -18,16 +18,13 @@ import com.aappeye.foreksty.ui.settings.Settings
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import com.google.android.gms.location.LocationServices
 
 private const val  MY_PERMISSION_ACCESS_COARSE_LOCATION = 1
 
-class MainActivity : AppCompatActivity(), KodeinAware {
+class MainActivity : AppCompatActivity() {
 
-    override val kodein by kodein()
-    private val fusedLocationProviderClient: FusedLocationProviderClient by instance()
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private val locationCallback = object : LocationCallback(){
         override fun onLocationResult(p0: LocationResult?) {
             super.onLocationResult(p0)
@@ -41,9 +38,10 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
         navController = findNavController(R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)
-       // NavigationUI.setupActionBarWithNavController(this,navController)
 
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setHomeButtonEnabled(true)
@@ -99,12 +97,7 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         getMenuInflater().inflate(R.menu.toolbar, menu)
         return true
     }
-/*
 
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController,null)
-    }
-*/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
 

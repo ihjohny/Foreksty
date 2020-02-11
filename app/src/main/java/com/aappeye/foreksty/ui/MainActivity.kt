@@ -44,8 +44,6 @@ class MainActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-       // fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
         navController = findNavController(R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)
 

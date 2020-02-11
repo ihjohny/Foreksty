@@ -3,15 +3,8 @@ package com.aappeye.foreksty.ui.settings
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import com.aappeye.foreksty.R
 import kotlinx.android.synthetic.main.activity_settings.*
-import android.widget.TimePicker
-import android.app.TimePickerDialog
-import android.os.Build
-import androidx.preference.PreferenceManager
 
 class Settings : AppCompatActivity() {
 

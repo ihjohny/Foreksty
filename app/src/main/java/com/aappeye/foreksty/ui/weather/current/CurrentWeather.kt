@@ -27,8 +27,6 @@ import javax.inject.Inject
 
 class CurrentWeather : ScopedFragment(){
 
-/*    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient*/
-
     @Inject lateinit var viewModelFactory: CurrentWeatherViewModelFactory
     private lateinit var viewModel: CurrentWeatherViewModel
     private var weatherIconMap: Map<String, Drawable>? = null
@@ -44,23 +42,6 @@ class CurrentWeather : ScopedFragment(){
         super.onActivityCreated(savedInstanceState)
 
         weatherIconMap = WeatherIcons.map(context!!)
-
-/*        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context!!)
-        var settingsProvider = SettingsProviderImpl(context!!)
-        var locationProvider = LocationProviderImpl(fusedLocationProviderClient,context!!)
-        var connectivityInterceptor = ConnectivityInterceptorImpl(context!!)
-        var apiWeatherService = ApiWeatherService(connectivityInterceptor)
-
-        var database = WeatherDatabase(context!!)
-        var currentWeatherDao = database.currentWeatherDao()
-        var hourlyWeatherDao = database.hourlyWeatherDao()
-        var dailyWeatherDao = database.dailyWeatherDao()
-        var weatherLocationDao = database.weatherLocationDao()
-        var weatherNetworkDataSource = WeatherNetworkDataSourceImpl(apiWeatherService)
-
-        var forecastRepository = ForecastRepositoryImpl(currentWeatherDao, hourlyWeatherDao, dailyWeatherDao, weatherLocationDao,weatherNetworkDataSource,settingsProvider, locationProvider)
-
-        viewModelFactory = CurrentWeatherViewModelFactory(forecastRepository, settingsProvider)*/
 
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(CurrentWeatherViewModel::class.java)

@@ -17,10 +17,8 @@ import javax.inject.Inject
 class WeekWeather : ScopedFragment() {
 
     @Inject lateinit var viewModelFactory: WeekWeatherViewModelFactory
-
     private lateinit var viewModel: WeekWeatherViewModel
     private lateinit var weekWeatherAdapter: WeekWeatherAdapter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

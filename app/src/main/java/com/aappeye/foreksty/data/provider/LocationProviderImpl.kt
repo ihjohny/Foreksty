@@ -35,19 +35,7 @@ class LocationProviderImpl @Inject constructor(
     }
 
     override suspend fun getPreferredLocationString(): String {
-/*        if(isUsingDeviceLocation()){
-            try{
-                val deviceLocation = getLastDeviceLocation().await()
-                    ?: return "${getCustomLocationName()}"
-                    return "${deviceLocation.latitude},${deviceLocation.longitude}"
-            }
-            catch (e: LocationPermissionNotGrantedException){
-                return "${getCustomLocationName()}"
-            }
-        }
-        else{
-            return "${getCustomLocationName()}"
-        }*/
+
         try{
             val deviceLocation = getLastDeviceLocation().await()
                 ?: return "22.870064,91.096935"
@@ -58,21 +46,6 @@ class LocationProviderImpl @Inject constructor(
         }
 
     }
-/*
-    override fun getPreferredUnitSystem(): String {
-        Log.d("Preferences", preferences.getString(UNIT_SYSTEM, UNIT_SYSTEM_DEF))
-        return preferences.getString(UNIT_SYSTEM, UNIT_SYSTEM_DEF)!!
-    }
-
-    override fun getPreferredLanguage(): String {
-        Log.d("Preferences", preferences.getString(LANGUAGE, LANGUAGE_DEF))
-        return preferences.getString(LANGUAGE, LANGUAGE_DEF)!!
-    }
-
-    override fun getPreferredUpdateFrequency(): String {
-        Log.d("Preferences", preferences.getString(UPDATE_FREQUENCY, UPDATE_FREQUENCY_DEF))
-        return preferences.getString(UPDATE_FREQUENCY, UPDATE_FREQUENCY_DEF)!!
-    }*/
 
     private suspend fun hasDeviceLocationChanged(lastWeatherLocation: WeatherLocation): Boolean{
         if(!isUsingDeviceLocation())

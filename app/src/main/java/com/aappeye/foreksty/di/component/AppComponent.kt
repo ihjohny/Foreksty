@@ -16,10 +16,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf (AndroidInjectionModule::class, ActivityBuilder::class, FragmentBuilder::class ,AppModule::class, DatabaseModule::class,
-    NetworkModule::class, RepositoryModule::class, LocationModule::class,ViewModelModule::class, ApiModule::class ))
-public interface AppComponent : AndroidInjector<ForekstyApplication> {
-
-/*    fun inject(application: Application)*/
+    NetworkModule::class, RepositoryModule::class, LocationModule::class,ViewModelModule::class))
+interface AppComponent : AndroidInjector<ForekstyApplication> {
 
     @Component.Builder
     interface Builder {

@@ -11,15 +11,12 @@ import com.aappeye.foreksty.R
 import com.aappeye.foreksty.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.week_weather_fragment.*
 import kotlinx.coroutines.launch
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
+import javax.inject.Inject
 
 
-class WeekWeather : ScopedFragment(), KodeinAware {
+class WeekWeather : ScopedFragment() {
 
-    override val kodein by kodein()
-    private val viewModelFactory: WeekWeatherViewModelFactory by instance()
+    @Inject lateinit var viewModelFactory: WeekWeatherViewModelFactory
 
     private lateinit var viewModel: WeekWeatherViewModel
     private lateinit var weekWeatherAdapter: WeekWeatherAdapter

@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.aappeye.foreksty.data.provider.SettingsProvider
 import com.aappeye.foreksty.data.repository.ForecastRepository
+import javax.inject.Inject
 
-class TodayWeatherViewModelFactory(
+class TodayWeatherViewModelFactory @Inject constructor(
     private val forecastRepository: ForecastRepository,
     private val settingsProvider: SettingsProvider
 ): ViewModelProvider.NewInstanceFactory() {

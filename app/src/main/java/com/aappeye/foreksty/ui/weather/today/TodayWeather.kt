@@ -30,12 +30,12 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import kotlinx.android.synthetic.main.today_weather_fragment.*
 import kotlinx.coroutines.launch
-import org.kodein.di.KodeinAware
+import javax.inject.Inject
 
 
 class TodayWeather : ScopedFragment(){
 
-    private lateinit var viewModelFactory: CurrentWeatherViewModelFactory
+    @Inject lateinit var viewModelFactory: TodayWeatherViewModelFactory
     private lateinit var viewModel: TodayWeatherViewModel
     private var weatherIconMap: Map<String, Drawable>? = null
     private lateinit var hourlyWeatherAdapter: HourlyWeatherAdapter

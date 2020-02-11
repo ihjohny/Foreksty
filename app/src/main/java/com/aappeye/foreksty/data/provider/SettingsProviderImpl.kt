@@ -1,6 +1,7 @@
 package com.aappeye.foreksty.data.provider
 
 import android.content.Context
+import javax.inject.Inject
 
 const val UNIT_SYSTEM = "unit_system"
 const val UNIT_SYSTEM_DEF = "si"
@@ -9,7 +10,7 @@ const val LANGUAGE_DEF = "en"
 const val UPDATE_FREQUENCY ="update_freq"
 const val UPDATE_FREQUENCY_DEF = "30"
 
-class SettingsProviderImpl(
+class SettingsProviderImpl @Inject constructor(
     context: Context
 ): PreferenceProvider(context), SettingsProvider {
 

@@ -2,29 +2,35 @@ package com.aappeye.foreksty.ui
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aappeye.foreksty.R
-import kotlinx.android.synthetic.main.activity_main.*
-import android.widget.Toast
-import android.view.MenuItem
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import com.aappeye.foreksty.di.component.AppComponent
+import com.aappeye.foreksty.di.component.DaggerAppComponent
 import com.aappeye.foreksty.ui.settings.Settings
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import dagger.android.DaggerActivity
+import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 private const val  MY_PERMISSION_ACCESS_COARSE_LOCATION = 1
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    @Inject lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
     private val locationCallback = object : LocationCallback(){
         override fun onLocationResult(p0: LocationResult?) {
             super.onLocationResult(p0)
@@ -38,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+       // fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         navController = findNavController(R.id.nav_host_fragment)
         bottom_nav.setupWithNavController(navController)

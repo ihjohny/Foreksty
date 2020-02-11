@@ -18,8 +18,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.threeten.bp.ZonedDateTime
+import javax.inject.Inject
 
-class ForecastRepositoryImpl(
+class ForecastRepositoryImpl @Inject constructor(
     private val currentWeatherDao: CurrentWeatherDao,
     private val hourlyWeatherDao: HourlyWeatherDao,
     private val dailyWeatherDao: DailyWeatherDao,

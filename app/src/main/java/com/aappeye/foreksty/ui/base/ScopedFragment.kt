@@ -2,12 +2,13 @@ package com.aappeye.foreksty.ui.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-abstract class ScopedFragment : Fragment(),CoroutineScope{
+abstract class ScopedFragment : DaggerFragment(),CoroutineScope{
     private lateinit var job: Job
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main

@@ -7,9 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.aappeye.foreksty.internal.NoConnectivityException
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 
 
-class WeatherNetworkDataSourceImpl(
+class WeatherNetworkDataSourceImpl @Inject constructor(
     private val apiWeatherService: ApiWeatherService
 ) : WeatherNetworkDataSource {
 

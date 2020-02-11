@@ -11,11 +11,12 @@ import com.aappeye.foreksty.internal.LocationPermissionNotGrantedException
 import com.aappeye.foreksty.internal.asDeferred
 import com.google.android.gms.location.FusedLocationProviderClient
 import kotlinx.coroutines.Deferred
+import javax.inject.Inject
 
 const val USE_DEVICE_LOCATION = "USE_DEVICE_LOCATION"
 const val CUSTOM_LOCATION ="CUSTOM_LOCATION"
 
-class LocationProviderImpl(
+class LocationProviderImpl @Inject constructor(
     private val fusedLocationProviderClient: FusedLocationProviderClient,
     context: Context
 ) : PreferenceProvider(context), LocationProvider {

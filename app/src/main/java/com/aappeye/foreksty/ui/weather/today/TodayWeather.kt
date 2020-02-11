@@ -32,7 +32,6 @@ import kotlinx.android.synthetic.main.today_weather_fragment.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 class TodayWeather : ScopedFragment(){
 
     @Inject lateinit var viewModelFactory: TodayWeatherViewModelFactory

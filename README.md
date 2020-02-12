@@ -5,7 +5,7 @@ Foreksty is a simple and nice looking android application that provide weather i
 <br><br>Foreksty use Darksky API for weather data source. It is developed by using kotlin and android architecture components like LiveData, ViewModel, Room, Navigation. Following google's MVVM(Model View ViewModel) architecture which enhances separation of concerns. For injecting
 dependencies use Kodein, caching data using Room Persistence library and async task manages using kotlin coroutines.
 
-[Try Sample APK](https://drive.google.com/open?id=1wAa_12UOrHE3rzFsMYcoUk87LMDlV7Pd)
+[Try Sample APK](https://drive.google.com/open?id=1BtVu5F55nxf2s8wHzIS0NDfQftlP7EFy)
 
 
 ### Sample

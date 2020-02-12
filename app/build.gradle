@@ -85,7 +85,6 @@ dependencies {
     //WeatherLocation
     implementation "com.google.android.gms:play-services-location:16.0.0"
 
-
     //Dagger
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android:$daggerVersion"

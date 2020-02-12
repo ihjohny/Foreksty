@@ -6,36 +6,19 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.aappeye.foreksty.R
-import com.aappeye.foreksty.di.component.AppComponent
-import com.aappeye.foreksty.di.component.DaggerAppComponent
 import com.aappeye.foreksty.ui.settings.Settings
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
-import dagger.android.DaggerActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 private const val  MY_PERMISSION_ACCESS_COARSE_LOCATION = 1
 
 class MainActivity : DaggerAppCompatActivity() {
-
-    @Inject lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
-    private val locationCallback = object : LocationCallback(){
-        override fun onLocationResult(p0: LocationResult?) {
-            super.onLocationResult(p0)
-        }
-    }
 
     private lateinit var navController: NavController
 
@@ -51,21 +34,9 @@ class MainActivity : DaggerAppCompatActivity() {
         getSupportActionBar()?.setHomeButtonEnabled(true)
         getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp)
 
-        requestLocationPermission()
-        if(hasLocaitonPermission()){
-            bindLocationManager()
-        }
-        else {
+        if(!hasLocaitonPermission()) {
             requestLocationPermission()
         }
-    }
-
-    private fun bindLocationManager() {
-        LifecycleBoundLocationManager(
-            this,
-            fusedLocationProviderClient,
-            locationCallback
-        )
     }
 
     private fun requestLocationPermission() {
@@ -86,10 +57,7 @@ class MainActivity : DaggerAppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray) {
         if(requestCode == MY_PERMISSION_ACCESS_COARSE_LOCATION){
-            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                bindLocationManager()
-            }
-            else{
+            if(!grantResults.isNotEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(this,"Please, set location manually in settings",Toast.LENGTH_SHORT).show()
             }
         }

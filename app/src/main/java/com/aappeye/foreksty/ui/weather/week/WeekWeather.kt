@@ -24,19 +24,24 @@ class WeekWeather : ScopedFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(WeekWeatherViewModel::class.java)
+        bindUi()
+
         return inflater.inflate(R.layout.week_weather_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(WeekWeatherViewModel::class.java)
-        bindUi()
+
+       // bindUi()
     }
 
     private fun bindUi() = launch {
-        val dailyWeatherList = viewModel.dailyWeatherList.await()
+
         val weatherLocation = viewModel.weatherLocation.await()
+        val dailyWeatherList = viewModel.dailyWeatherList.await()
 
         weatherLocation.observe(this@WeekWeather, Observer {
             if(weatherLocation == null) return@Observer
@@ -44,9 +49,11 @@ class WeekWeather : ScopedFragment() {
         })
 
         dailyWeatherList.observe(this@WeekWeather, Observer {
-            if(dailyWeatherList == null) return@Observer
+
             week_fetch_id.visibility = View.GONE
             week_recyclerView_id.visibility = View.VISIBLE
+
+            if(it == null || it.isEmpty()) return@Observer
 
             weekWeatherAdapter = WeekWeatherAdapter(it.subList(1, it.size), viewModel.isMetricUnit)
             week_recyclerView_id.apply {

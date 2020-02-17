@@ -4,11 +4,15 @@ import android.app.Application
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.aappeye.foreksty.R
+import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
+import com.aappeye.foreksty.data.db.entity.WeatherLocation
 import com.aappeye.foreksty.ui.base.ScopedFragment
 import com.aappeye.foreksty.utils.StringFormatter.getDistanceWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getPercentage
@@ -18,16 +22,19 @@ import com.aappeye.foreksty.utils.StringFormatter.getTemperaturesWithUnit
 import com.aappeye.foreksty.utils.WeatherIcons
 import kotlinx.android.synthetic.main.current_weather_fragment.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
+const val TAG = "Fragment"
 
-class CurrentWeather : ScopedFragment(){
+class CurrentWeather : ScopedFragment() {
 
-    @Inject lateinit var viewModelFactory: CurrentWeatherViewModelFactory
+    @Inject
+    lateinit var viewModelFactory: CurrentWeatherViewModelFactory
     private lateinit var viewModel: CurrentWeatherViewModel
     private var weatherIconMap: Map<String, Drawable>? = null
 
@@ -35,34 +42,37 @@ class CurrentWeather : ScopedFragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        weatherIconMap = WeatherIcons.map(context!!)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(CurrentWeatherViewModel::class.java)
+        bindUi()
+
         return inflater.inflate(R.layout.current_weather_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        weatherIconMap = WeatherIcons.map(context!!)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(CurrentWeatherViewModel::class.java)
-        bindUi()
+        // bindUi()
     }
 
-    private fun bindUi() = launch{
+    private fun bindUi() = launch {
 
-        val currentWeather= viewModel.weather.await()
         val weatherLocation = viewModel.weatherLocation.await()
+        val currentWeather = viewModel.weather.await()
 
-        weatherLocation.observe(this@CurrentWeather, Observer {weatherLocation ->
-            if(weatherLocation == null) return@Observer
-           // updateLocation(location.latitude, location.longitude)
+        weatherLocation.observe(this@CurrentWeather, Observer { weatherLocation ->
+            if (weatherLocation == null) return@Observer
+            // updateLocation(location.latitude, location.longitude)
         })
 
-        currentWeather.observe(this@CurrentWeather,  Observer {
+        currentWeather.observe(this@CurrentWeather, Observer {
 
-            if(it == null) return@Observer
             cwf_fetch_id.visibility = View.GONE
             cwf_content_id.visibility = View.VISIBLE
+
+            if (it == null) return@Observer
 
             updateTemperatures(it.temperature)
             updateFeelsLike(it.apparentTemperature)
@@ -75,7 +85,6 @@ class CurrentWeather : ScopedFragment(){
             updateVisibility(it.visibility)
             updateLastUpdate(it.time)
             updateStateIcon(it.icon)
-
 
         })
     }
@@ -122,7 +131,8 @@ class CurrentWeather : ScopedFragment(){
 
     private fun updateLastUpdate(time: Long) {
         val dt = Instant.ofEpochSecond(time).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        cwf_cv0_time_id.text = dt.format(DateTimeFormatter.ofPattern("hh:mm a dd-MMM-yyyy", Locale.getDefault()))
+        cwf_cv0_time_id.text =
+            dt.format(DateTimeFormatter.ofPattern("hh:mm a dd-MMM-yyyy", Locale.getDefault()))
     }
 
     private fun updateStateIcon(icon: String) {

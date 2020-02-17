@@ -1,6 +1,5 @@
 package com.aappeye.foreksty.data.network
 
-
 import com.aappeye.foreksty.BuildConfig
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -32,9 +31,8 @@ interface ApiWeatherService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(connectivityInterceptor)
-                .writeTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(1, TimeUnit.MINUTES)
-                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(false)
                 .build()
 
             return Retrofit.Builder()

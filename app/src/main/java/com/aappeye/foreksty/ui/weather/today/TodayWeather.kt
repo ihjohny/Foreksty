@@ -43,26 +43,34 @@ class TodayWeather : ScopedFragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        weatherIconMap = context?.let { WeatherIcons.map(it) }
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(TodayWeatherViewModel::class.java)
+        bindUi()
+
         return inflater.inflate(R.layout.today_weather_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        weatherIconMap = context?.let { WeatherIcons.map(it) }
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(TodayWeatherViewModel::class.java)
-        bindUi()
+
+       // bindUi()
     }
 
     private fun bindUi() = launch{
+
+        val weatherLocation = viewModel.weatherLocation.await()
         val todayWeather = viewModel.todayWeather.await()
         val hourlyWeatherList  = viewModel.hourlyWeatherList.await()
-        val weatherLocation = viewModel.weatherLocation.await()
 
         todayWeather.observe(this@TodayWeather, Observer {
-            if( it == null) return@Observer
+
             twf_fetch_id.visibility = View.GONE
             twf_content_id.visibility = View.VISIBLE
+
+            if( it == null) return@Observer
+
 
             updateDay(it.time)
             updateDate(it.time)
@@ -83,9 +91,7 @@ class TodayWeather : ScopedFragment(){
         })
 
         hourlyWeatherList.observe(this@TodayWeather, Observer {
-            if( it == null) return@Observer
-            twf_fetch_id.visibility = View.GONE
-            twf_content_id.visibility = View.VISIBLE
+            if( it == null || it.isEmpty()) return@Observer
 
             updateHourlyWeather(it)
             updateChancePrecChart(it)

@@ -13,10 +13,7 @@ import com.aappeye.foreksty.data.network.WeatherNetworkDataSource
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.aappeye.foreksty.data.provider.LocationProvider
 import com.aappeye.foreksty.data.provider.SettingsProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.threeten.bp.ZonedDateTime
 import javax.inject.Inject
 
@@ -42,9 +39,8 @@ class ForecastRepositoryImpl @Inject constructor(
         val lastWeatherLocation = weatherLocationDao.getLocationNonLive()
         if(lastWeatherLocation == null){
             fetchWeather()
-            return
         }
-        if(isUpdateFreq(lastWeatherLocation.zonedDateTime)){
+        else if(isUpdateFreq(lastWeatherLocation.zonedDateTime)){
             fetchWeather()
         }
     }
@@ -62,28 +58,28 @@ class ForecastRepositoryImpl @Inject constructor(
 
     override suspend fun getCurrentWeather(): LiveData<CurrentWeatherEntry> {
         return withContext(Dispatchers.IO) {
-            initWeatherData()
+         //   initWeatherData()
             return@withContext currentWeatherDao.getWeather()
         }
     }
 
     override suspend fun getHourlyWeatherList(): LiveData<List<HourlyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
-            initWeatherData()
+         //   initWeatherData()
             return@withContext hourlyWeatherDao.getHourlyWeather()
         }
     }
 
     override suspend fun getTodayWeather(): LiveData<DailyWeatherEntry> {
         return withContext(Dispatchers.IO){
-            initWeatherData()
+        //    initWeatherData()
             return@withContext dailyWeatherDao.getTodayWeather()
         }
     }
 
     override suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
-            initWeatherData()
+         //   initWeatherData()
             return@withContext dailyWeatherDao.getDailyWeather()
         }
     }
@@ -96,10 +92,12 @@ class ForecastRepositoryImpl @Inject constructor(
     }
 
     private suspend fun fetchWeather(){
-        weatherNetworkDataSource.fetchWeather(
-            locationProvider.getPreferredLocationString(),
-            settingsProvider.getPreferredLanguage()
-        )
+        withTimeoutOrNull(30000) {
+            weatherNetworkDataSource.fetchWeather(
+                locationProvider.getPreferredLocationString(),
+                settingsProvider.getPreferredLanguage()
+            )
+        }
     }
 
     private fun isUpdateFreq(lastFetchTime: ZonedDateTime): Boolean {

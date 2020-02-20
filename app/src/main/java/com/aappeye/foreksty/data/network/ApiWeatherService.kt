@@ -32,7 +32,7 @@ interface ApiWeatherService {
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(connectivityInterceptor)
                 .readTimeout(30, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(false)
+/*                .retryOnConnectionFailure(false)*/
                 .build()
 
             return Retrofit.Builder()

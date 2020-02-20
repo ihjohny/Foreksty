@@ -71,7 +71,6 @@ class TodayWeather : ScopedFragment(){
 
             if( it == null) return@Observer
 
-
             updateDay(it.time)
             updateDate(it.time)
             updateStateIcon(it.icon)

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.core.content.ContextCompat
-import com.aappeye.foreksty.data.db.entity.WeatherLocation
+import com.aappeye.foreksty.data.db.entity.WeatherLocationEntry
 import com.aappeye.foreksty.internal.LocationPermissionNotGrantedException
 import com.aappeye.foreksty.internal.asDeferred
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 const val USE_DEVICE_LOCATION = "USE_DEVICE_LOCATION"
 const val CUSTOM_LOCATION ="CUSTOM_LOCATION"
+const val DEFAULT_LOCATION = "23.7811055,90.400918"
 
 class LocationProviderImpl @Inject constructor(
     private val fusedLocationProviderClient: FusedLocationProviderClient,
@@ -22,7 +23,7 @@ class LocationProviderImpl @Inject constructor(
 
     private val appContext = context.applicationContext
 
-    override suspend fun hasLocationChanged(lastWeatherLocation: WeatherLocation): Boolean {
+    override suspend fun hasLocationChanged(lastWeatherLocation: WeatherLocationEntry): Boolean {
         val deviceLocationChanged = try {
             hasDeviceLocationChanged(lastWeatherLocation)
         }
@@ -37,16 +38,16 @@ class LocationProviderImpl @Inject constructor(
 
         try{
             val deviceLocation = getLastDeviceLocation().await()
-                ?: return "22.870064,91.096935"
+                ?: return DEFAULT_LOCATION
             return "${deviceLocation.latitude},${deviceLocation.longitude}"
         }
         catch (e: LocationPermissionNotGrantedException){
-            return "22.870064,91.096935"
+            return DEFAULT_LOCATION
         }
 
     }
 
-    private suspend fun hasDeviceLocationChanged(lastWeatherLocation: WeatherLocation): Boolean{
+    private suspend fun hasDeviceLocationChanged(lastWeatherLocation: WeatherLocationEntry): Boolean{
         if(!isUsingDeviceLocation())
             return false
         val deviceLocation = getLastDeviceLocation().await()?: return false
@@ -55,7 +56,7 @@ class LocationProviderImpl @Inject constructor(
                 Math.abs(deviceLocation.longitude - lastWeatherLocation.longitude) > comparisonThreshold
     }
 
-    private fun hasCustomLocationChanged(lastWeatherLocation: WeatherLocation): Boolean{
+    private fun hasCustomLocationChanged(lastWeatherLocation: WeatherLocationEntry): Boolean{
         if(!isUsingDeviceLocation()){
             val customLocationName = getCustomLocationName()
             //return customLocationName != lastWeatherLocation.name

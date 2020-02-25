@@ -1,8 +1,8 @@
 package com.aappeye.foreksty.di.module
 
 import android.content.Context
-import android.util.Log
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 
@@ -11,6 +11,6 @@ class LocationModule{
 
     @Provides
     fun provideFusedLocationProviderClient(context: Context): FusedLocationProviderClient {
-        return FusedLocationProviderClient(context)
+        return LocationServices.getFusedLocationProviderClient(context)
     }
 }

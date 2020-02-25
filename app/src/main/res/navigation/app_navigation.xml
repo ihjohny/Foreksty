@@ -6,18 +6,18 @@
             app:startDestination="@id/currentWeather">
 
     <fragment android:id="@+id/currentWeather"
-              android:name="com.aappeye.foreksty.ui.weather.current.CurrentWeather"
+              android:name="com.aappeye.foreksty.ui.weather.current.CurrentWeatherFragment"
               android:label="@string/current_weather"
-              tools:layout="@layout/current_weather_fragment"/>
+              tools:layout="@layout/fragment_current_weather"/>
 
     <fragment android:id="@+id/todayWeather"
-              android:name="com.aappeye.foreksty.ui.weather.today.TodayWeather"
+              android:name="com.aappeye.foreksty.ui.weather.today.TodayWeatherFragment"
               android:label="@string/today_weather"
-              tools:layout="@layout/today_weather_fragment"/>
+              tools:layout="@layout/fragment_today_weather"/>
 
     <fragment android:id="@+id/weekWeather"
-              android:name="com.aappeye.foreksty.ui.weather.week.WeekWeather"
+              android:name="com.aappeye.foreksty.ui.weather.week.WeekWeatherFragment"
               android:label="@string/this_week"
-              tools:layout="@layout/week_weather_fragment"/>
+              tools:layout="@layout/fragment_week_weather"/>
 
 </navigation>

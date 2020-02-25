@@ -1,18 +1,13 @@
 package com.aappeye.foreksty.ui.weather.current
 
-import android.app.Application
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.aappeye.foreksty.R
-import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
-import com.aappeye.foreksty.data.db.entity.WeatherLocation
 import com.aappeye.foreksty.ui.base.ScopedFragment
 import com.aappeye.foreksty.utils.StringFormatter.getDistanceWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getPercentage
@@ -20,9 +15,8 @@ import com.aappeye.foreksty.utils.StringFormatter.getPressureWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getSpeedWithUnit
 import com.aappeye.foreksty.utils.StringFormatter.getTemperaturesWithUnit
 import com.aappeye.foreksty.utils.WeatherIcons
-import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.android.synthetic.main.fragment_current_weather.*
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeoutOrNull
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
@@ -31,7 +25,7 @@ import javax.inject.Inject
 
 const val TAG = "Fragment"
 
-class CurrentWeather : ScopedFragment() {
+class CurrentWeatherFragment : ScopedFragment() {
 
     @Inject
     lateinit var viewModelFactory: CurrentWeatherViewModelFactory
@@ -48,13 +42,7 @@ class CurrentWeather : ScopedFragment() {
             .get(CurrentWeatherViewModel::class.java)
         bindUi()
 
-        return inflater.inflate(R.layout.current_weather_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        // bindUi()
+        return inflater.inflate(R.layout.fragment_current_weather, container, false)
     }
 
     private fun bindUi() = launch {
@@ -62,12 +50,12 @@ class CurrentWeather : ScopedFragment() {
         val weatherLocation = viewModel.weatherLocation.await()
         val currentWeather = viewModel.weather.await()
 
-        weatherLocation.observe(this@CurrentWeather, Observer { weatherLocation ->
+        weatherLocation.observe(viewLifecycleOwner, Observer { weatherLocation ->
             if (weatherLocation == null) return@Observer
             // updateLocation(location.latitude, location.longitude)
         })
 
-        currentWeather.observe(this@CurrentWeather, Observer {
+        currentWeather.observe(viewLifecycleOwner, Observer {
 
             cwf_fetch_id.visibility = View.GONE
             cwf_content_id.visibility = View.VISIBLE
@@ -98,7 +86,8 @@ class CurrentWeather : ScopedFragment() {
     }
 
     private fun updateFeelsLike(apparentTemperature: Double) {
-        cwf_cv0_feels_id.text = "${getString(R.string.feels) } ${getTemperaturesWithUnit(apparentTemperature, viewModel.isMetricUnit)}"
+        val str = "${getString(R.string.feels) } ${getTemperaturesWithUnit(apparentTemperature, viewModel.isMetricUnit)}"
+        cwf_cv0_feels_id.text = str
     }
 
     private fun updateStateText(summary: String) {

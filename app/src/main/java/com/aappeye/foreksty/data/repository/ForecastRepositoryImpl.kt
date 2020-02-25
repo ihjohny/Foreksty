@@ -1,5 +1,6 @@
 package com.aappeye.foreksty.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.aappeye.foreksty.data.db.CurrentWeatherDao
 import com.aappeye.foreksty.data.db.DailyWeatherDao
@@ -8,7 +9,7 @@ import com.aappeye.foreksty.data.db.WeatherLocationDao
 import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
 import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
-import com.aappeye.foreksty.data.db.entity.WeatherLocation
+import com.aappeye.foreksty.data.db.entity.WeatherLocationEntry
 import com.aappeye.foreksty.data.network.WeatherNetworkDataSource
 import com.aappeye.foreksty.data.network.response.WeatherResponse
 import com.aappeye.foreksty.data.provider.LocationProvider
@@ -25,7 +26,7 @@ class ForecastRepositoryImpl @Inject constructor(
     private val weatherNetworkDataSource: WeatherNetworkDataSource,
     private val settingsProvider: SettingsProvider,
     private val locationProvider: LocationProvider
-): ForecastRepository {
+) : ForecastRepository {
 
     init {
         weatherNetworkDataSource.apply {
@@ -37,67 +38,65 @@ class ForecastRepositoryImpl @Inject constructor(
 
     private suspend fun initWeatherData() {
         val lastWeatherLocation = weatherLocationDao.getLocationNonLive()
-        if(lastWeatherLocation == null){
-            fetchWeather()
-        }
-        else if(isUpdateFreq(lastWeatherLocation.zonedDateTime)){
+        if (lastWeatherLocation == null || isUpdateFreq(lastWeatherLocation.zonedDateTime)) {
             fetchWeather()
         }
     }
 
-    private fun presistFetchedWeather(fetchedWeather: WeatherResponse){
-        GlobalScope.launch(Dispatchers.IO){
+    private fun presistFetchedWeather(fetchedWeather: WeatherResponse) {
+        GlobalScope.launch(Dispatchers.IO) {
             currentWeatherDao.upsert(fetchedWeather.currentWeatherEntry)
             hourlyWeatherDao.deleteOldEntries()
             hourlyWeatherDao.insert(fetchedWeather.hourlyWeatherEntries.hourlyentries)
             dailyWeatherDao.deleteOldEntries()
             dailyWeatherDao.insert(fetchedWeather.dailyWeatherEntries.dailyentries)
-            weatherLocationDao.upsert(WeatherLocation(fetchedWeather.latitude,fetchedWeather.longitude,fetchedWeather.timezone,fetchedWeather.currentWeatherEntry.time))
+            weatherLocationDao.upsert(
+                WeatherLocationEntry(
+                    fetchedWeather.latitude,
+                    fetchedWeather.longitude,
+                    fetchedWeather.timezone,
+                    fetchedWeather.currentWeatherEntry.time
+                )
+            )
         }
     }
 
     override suspend fun getCurrentWeather(): LiveData<CurrentWeatherEntry> {
         return withContext(Dispatchers.IO) {
-         //   initWeatherData()
             return@withContext currentWeatherDao.getWeather()
         }
     }
 
     override suspend fun getHourlyWeatherList(): LiveData<List<HourlyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
-         //   initWeatherData()
             return@withContext hourlyWeatherDao.getHourlyWeather()
         }
     }
 
     override suspend fun getTodayWeather(): LiveData<DailyWeatherEntry> {
-        return withContext(Dispatchers.IO){
-        //    initWeatherData()
+        return withContext(Dispatchers.IO) {
             return@withContext dailyWeatherDao.getTodayWeather()
         }
     }
 
     override suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>> {
         return withContext(Dispatchers.IO) {
-         //   initWeatherData()
             return@withContext dailyWeatherDao.getDailyWeather()
         }
     }
 
-    override suspend fun getWeatherLocation(): LiveData<WeatherLocation> {
+    override suspend fun getWeatherLocation(): LiveData<WeatherLocationEntry> {
         return withContext(Dispatchers.IO) {
             initWeatherData()
             return@withContext weatherLocationDao.getLocation()
         }
     }
 
-    private suspend fun fetchWeather(){
-        withTimeoutOrNull(30000) {
-            weatherNetworkDataSource.fetchWeather(
-                locationProvider.getPreferredLocationString(),
-                settingsProvider.getPreferredLanguage()
-            )
-        }
+    private suspend fun fetchWeather() {
+        weatherNetworkDataSource.fetchWeather(
+            locationProvider.getPreferredLocationString(),
+            settingsProvider.getPreferredLanguage()
+        )
     }
 
     private fun isUpdateFreq(lastFetchTime: ZonedDateTime): Boolean {

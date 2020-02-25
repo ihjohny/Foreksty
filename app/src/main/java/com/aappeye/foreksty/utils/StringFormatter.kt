@@ -1,6 +1,6 @@
 package com.aappeye.foreksty.utils
 
-import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.android.synthetic.main.fragment_current_weather.*
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter

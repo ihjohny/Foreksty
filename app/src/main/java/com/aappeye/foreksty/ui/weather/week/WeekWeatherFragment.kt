@@ -9,12 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aappeye.foreksty.R
 import com.aappeye.foreksty.ui.base.ScopedFragment
-import kotlinx.android.synthetic.main.week_weather_fragment.*
+import kotlinx.android.synthetic.main.fragment_week_weather.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class WeekWeather : ScopedFragment() {
+class WeekWeatherFragment : ScopedFragment() {
 
     @Inject lateinit var viewModelFactory: WeekWeatherViewModelFactory
     private lateinit var viewModel: WeekWeatherViewModel
@@ -29,7 +29,7 @@ class WeekWeather : ScopedFragment() {
             .get(WeekWeatherViewModel::class.java)
         bindUi()
 
-        return inflater.inflate(R.layout.week_weather_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_week_weather, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -43,12 +43,12 @@ class WeekWeather : ScopedFragment() {
         val weatherLocation = viewModel.weatherLocation.await()
         val dailyWeatherList = viewModel.dailyWeatherList.await()
 
-        weatherLocation.observe(this@WeekWeather, Observer {
+        weatherLocation.observe(viewLifecycleOwner, Observer {
             if(weatherLocation == null) return@Observer
             // updateLocation(location.latitude, location.longitude)
         })
 
-        dailyWeatherList.observe(this@WeekWeather, Observer {
+        dailyWeatherList.observe(viewLifecycleOwner, Observer {
 
             week_fetch_id.visibility = View.GONE
             week_recyclerView_id.visibility = View.VISIBLE

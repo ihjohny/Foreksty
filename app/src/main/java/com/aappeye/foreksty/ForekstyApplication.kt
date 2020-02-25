@@ -1,7 +1,6 @@
 package com.aappeye.foreksty
-import android.app.Application
+
 import androidx.preference.PreferenceManager
-import com.aappeye.foreksty.di.component.AppComponent
 import com.aappeye.foreksty.di.component.DaggerAppComponent
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector

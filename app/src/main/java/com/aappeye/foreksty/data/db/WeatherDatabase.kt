@@ -8,11 +8,11 @@ import androidx.room.TypeConverters
 import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
 import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
-import com.aappeye.foreksty.data.db.entity.WeatherLocation
+import com.aappeye.foreksty.data.db.entity.WeatherLocationEntry
 import com.aappeye.foreksty.utils.LocalDateConverter
 
 @Database(
-    entities = [CurrentWeatherEntry::class, HourlyWeatherEntry::class, DailyWeatherEntry::class, WeatherLocation::class],
+    entities = [CurrentWeatherEntry::class, HourlyWeatherEntry::class, DailyWeatherEntry::class, WeatherLocationEntry::class],
     version = 1
 )
 @TypeConverters(LocalDateConverter::class)

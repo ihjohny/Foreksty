@@ -1,16 +1,22 @@
 package com.aappeye.foreksty.data.repository
 
-import androidx.lifecycle.LiveData
 import com.aappeye.foreksty.data.db.entity.CurrentWeatherEntry
 import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
-import com.aappeye.foreksty.data.db.entity.WeatherLocation
+import com.aappeye.foreksty.data.db.entity.WeatherLocationEntry
+import com.aappeye.foreksty.data.network.response.WeatherResponse
+import io.reactivex.Observable
+import io.reactivex.Single
 
 interface ForecastRepository {
-    suspend fun getCurrentWeather(): LiveData<CurrentWeatherEntry>
-    suspend fun getHourlyWeatherList(): LiveData<List<HourlyWeatherEntry>>
-    suspend fun getTodayWeather(): LiveData<DailyWeatherEntry>
-    suspend fun getDailyWeatherList(): LiveData<List<DailyWeatherEntry>>
-    suspend fun getWeatherLocation(): LiveData<WeatherLocation>
+
+    fun fetchWeather(): Observable<WeatherResponse>
+    fun presistFetchedWeather(fetchedWeather: WeatherResponse)
+
+    fun getCurrentWeather(): Observable<CurrentWeatherEntry>
+    fun getHourlyWeatherList(): Observable<List<HourlyWeatherEntry>>
+    fun getTodayWeather(): Observable<DailyWeatherEntry>
+    fun getDailyWeatherList(): Observable<List<DailyWeatherEntry>>
+    fun getWeatherLocation(): Single<WeatherLocationEntry>
 
 }

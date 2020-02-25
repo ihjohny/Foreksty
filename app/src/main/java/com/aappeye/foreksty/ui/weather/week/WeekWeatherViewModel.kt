@@ -1,17 +1,31 @@
 package com.aappeye.foreksty.ui.weather.week
 
-import androidx.lifecycle.ViewModel;
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import com.aappeye.foreksty.data.db.entity.DailyWeatherEntry
 import com.aappeye.foreksty.data.provider.SettingsProvider
 import com.aappeye.foreksty.data.repository.ForecastRepository
-import com.aappeye.foreksty.internal.lazyDeferred
+import com.aappeye.foreksty.ui.base.VIEW_MODEL
 import com.aappeye.foreksty.ui.base.WeatherViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class WeekWeatherViewModel(
     private val forecastRepository: ForecastRepository,
-    private val settingsProvider: SettingsProvider
+    settingsProvider: SettingsProvider
 ) : WeatherViewModel(forecastRepository, settingsProvider) {
 
-    val dailyWeatherList by lazyDeferred {
-        forecastRepository.getDailyWeatherList()
+    val dailyWeatherList = MutableLiveData<List<DailyWeatherEntry>>()
+
+    override fun fetchData() {
+        fetchLocationData()
+        compositeDisposable.add(forecastRepository.getDailyWeatherList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                dailyWeatherList.postValue(it)
+            }, {
+                Log.e(VIEW_MODEL, "onError: ", it)
+            }))
     }
 }

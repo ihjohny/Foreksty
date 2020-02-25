@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@color/grey_5"
         android:orientation="vertical"
-        tools:context=".ui.weather.today.TodayWeather">
+        tools:context=".ui.weather.today.TodayWeatherFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/twf_fetch_id"

@@ -1,8 +1,8 @@
 package com.aappeye.foreksty.di.builder
 
-import com.aappeye.foreksty.ui.weather.current.CurrentWeather
-import com.aappeye.foreksty.ui.weather.today.TodayWeather
-import com.aappeye.foreksty.ui.weather.week.WeekWeather
+import com.aappeye.foreksty.ui.weather.current.CurrentWeatherFragment
+import com.aappeye.foreksty.ui.weather.today.TodayWeatherFragment
+import com.aappeye.foreksty.ui.weather.week.WeekWeatherFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -10,13 +10,13 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuilder {
 
     @ContributesAndroidInjector
-    abstract fun bindCurrentWeatherFragment(): CurrentWeather
+    abstract fun bindCurrentWeatherFragment(): CurrentWeatherFragment
 
     @ContributesAndroidInjector
-    abstract fun bindTodayWeatherFragment(): TodayWeather
+    abstract fun bindTodayWeatherFragment(): TodayWeatherFragment
 
     @ContributesAndroidInjector
-    abstract fun bindWeekWeatherFragment(): WeekWeather
+    abstract fun bindWeekWeatherFragment(): WeekWeatherFragment
 
 
 }

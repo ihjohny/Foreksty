@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aappeye.foreksty.R
 import com.aappeye.foreksty.data.db.entity.HourlyWeatherEntry
-import com.aappeye.foreksty.ui.base.ScopedFragment
-import com.aappeye.foreksty.ui.weather.current.CurrentWeatherViewModelFactory
 import com.aappeye.foreksty.utils.ChartValueFormatter
 import com.aappeye.foreksty.utils.StringFormatter.getDate
 import com.aappeye.foreksty.utils.StringFormatter.getDay
@@ -28,11 +26,11 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import kotlinx.android.synthetic.main.today_weather_fragment.*
-import kotlinx.coroutines.launch
+import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_today_weather.*
 import javax.inject.Inject
 
-class TodayWeather : ScopedFragment(){
+class TodayWeatherFragment : DaggerFragment(){
 
     @Inject lateinit var viewModelFactory: TodayWeatherViewModelFactory
     private lateinit var viewModel: TodayWeatherViewModel
@@ -49,22 +47,14 @@ class TodayWeather : ScopedFragment(){
             .get(TodayWeatherViewModel::class.java)
         bindUi()
 
-        return inflater.inflate(R.layout.today_weather_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_today_weather, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    private fun bindUi() {
 
-       // bindUi()
-    }
+        viewModel.fetchData()
 
-    private fun bindUi() = launch{
-
-        val weatherLocation = viewModel.weatherLocation.await()
-        val todayWeather = viewModel.todayWeather.await()
-        val hourlyWeatherList  = viewModel.hourlyWeatherList.await()
-
-        todayWeather.observe(this@TodayWeather, Observer {
+        viewModel.todayWeather.observe(viewLifecycleOwner, Observer {
 
             twf_fetch_id.visibility = View.GONE
             twf_content_id.visibility = View.VISIBLE
@@ -89,7 +79,7 @@ class TodayWeather : ScopedFragment(){
 
         })
 
-        hourlyWeatherList.observe(this@TodayWeather, Observer {
+        viewModel.hourlyWeatherList.observe(viewLifecycleOwner, Observer {
             if( it == null || it.isEmpty()) return@Observer
 
             updateHourlyWeather(it)

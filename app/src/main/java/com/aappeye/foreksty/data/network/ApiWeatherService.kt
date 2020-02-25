@@ -2,11 +2,10 @@ package com.aappeye.foreksty.data.network
 
 import com.aappeye.foreksty.BuildConfig
 import com.aappeye.foreksty.data.network.response.WeatherResponse
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.coroutines.Deferred
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
-import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,7 +21,7 @@ interface ApiWeatherService {
     fun getWeather(
         @Path("location") location: String,
         @Query("lang") lang: String
-    ): Deferred<Response<WeatherResponse>>
+    ): Observable<WeatherResponse>
 
     companion object {
         operator fun invoke(
@@ -31,14 +30,14 @@ interface ApiWeatherService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(connectivityInterceptor)
-                .readTimeout(30, TimeUnit.SECONDS)
-/*                .retryOnConnectionFailure(false)*/
+                .readTimeout(60, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(false)
                 .build()
 
             return Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(BASE_URL)
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ApiWeatherService::class.java)
